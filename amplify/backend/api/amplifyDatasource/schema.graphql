@@ -1,0 +1,57 @@
+type Users @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  username: String
+  profile_pic: String
+  email: AWSEmail
+  first_name: String
+  last_name: String
+  password: String
+  AssociatedMembers: AssociatedMembers @hasOne
+}
+
+enum Categories {
+  BEGGINERS
+  CADETS_JNR_UNDER21
+  SENIOR
+  ALL
+}
+
+enum Disciplines {
+  KUMITE
+  KATA
+  TRADITIONAL_KARATE
+}
+
+enum EventTypes {
+  TRAINING
+  CHAMPIONSHIP
+  SEMINAR
+}
+
+type Events @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  type: EventTypes
+  description: String
+  discipline: Disciplines
+  starting_date: AWSDate
+  duration: String
+  location: String
+  capacity: Int
+  image: String
+  category: Categories
+  price: Float
+  AssociatedMembers: [AssociatedMembers] @manyToMany(relationName: "AssociatedMembersEvents")
+}
+
+type AssociatedMembers @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  first_name: String
+  last_name: String
+  birth_date: String
+  gender: String
+  email: AWSEmail
+  events: [Events] @manyToMany(relationName: "AssociatedMembersEvents")
+  address: String
+  city: String
+}
