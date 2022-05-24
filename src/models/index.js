@@ -21,9 +21,10 @@ const Categories = {
   "ALL": "ALL"
 };
 
-const { Users, AssociatedMembers, Events, AssociatedMembersEvents } = initSchema(schema);
+const { Clubs, Users, AssociatedMembers, Events, AssociatedMembersEvents } = initSchema(schema);
 
 export {
+  Clubs,
   Users,
   AssociatedMembers,
   Events,

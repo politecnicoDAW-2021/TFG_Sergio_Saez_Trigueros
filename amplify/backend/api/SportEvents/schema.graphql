@@ -1,11 +1,20 @@
+type Clubs @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  location: String
+  city: String!
+  owner: String
+  phone: String!
+}
+
 type Users @model @auth(rules: [{allow: public}]) {
   id: ID!
-  username: String
+  username: String!
   profile_pic: String
-  email: AWSEmail
+  email: AWSEmail!
   first_name: String
   last_name: String
-  password: String
+  password: String!
   AssociatedMembers: AssociatedMembers @hasOne
 }
 
@@ -30,28 +39,30 @@ enum EventTypes {
 
 type Events @model @auth(rules: [{allow: public}]) {
   id: ID!
-  name: String
+  name: String!
   type: EventTypes
-  description: String
+  description: String!
   discipline: Disciplines
   starting_date: AWSDate
   duration: String
   location: String
   capacity: Int
   image: String
-  category: Categories
+  category: Categories!
   price: Float
   AssociatedMembers: [AssociatedMembers] @manyToMany(relationName: "AssociatedMembersEvents")
 }
 
 type AssociatedMembers @model @auth(rules: [{allow: public}]) {
   id: ID!
-  first_name: String
-  last_name: String
-  birth_date: String
+  first_name: String!
+  last_name: String!
+  birth_date: String!
   gender: String
-  email: AWSEmail
+  email: AWSEmail!
   events: [Events] @manyToMany(relationName: "AssociatedMembersEvents")
   address: String
   city: String
+  phone: String!
 }
+ 

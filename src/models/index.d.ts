@@ -21,6 +21,10 @@ export enum Categories {
 
 
 
+type ClubsMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
 type UsersMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
@@ -37,14 +41,27 @@ type AssociatedMembersEventsMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
+export declare class Clubs {
+  readonly id: string;
+  readonly name: string;
+  readonly location?: string | null;
+  readonly city: string;
+  readonly owner?: string | null;
+  readonly phone: string;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  constructor(init: ModelInit<Clubs, ClubsMetaData>);
+  static copyOf(source: Clubs, mutator: (draft: MutableModel<Clubs, ClubsMetaData>) => MutableModel<Clubs, ClubsMetaData> | void): Clubs;
+}
+
 export declare class Users {
   readonly id: string;
-  readonly username?: string | null;
+  readonly username: string;
   readonly profile_pic?: string | null;
-  readonly email?: string | null;
+  readonly email: string;
   readonly first_name?: string | null;
   readonly last_name?: string | null;
-  readonly password?: string | null;
+  readonly password: string;
   readonly AssociatedMembers?: AssociatedMembers | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
@@ -55,14 +72,15 @@ export declare class Users {
 
 export declare class AssociatedMembers {
   readonly id: string;
-  readonly first_name?: string | null;
-  readonly last_name?: string | null;
-  readonly birth_date?: string | null;
+  readonly first_name: string;
+  readonly last_name: string;
+  readonly birth_date: string;
   readonly gender?: string | null;
-  readonly email?: string | null;
+  readonly email: string;
   readonly events?: (AssociatedMembersEvents | null)[] | null;
   readonly address?: string | null;
   readonly city?: string | null;
+  readonly phone: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<AssociatedMembers, AssociatedMembersMetaData>);
@@ -71,16 +89,16 @@ export declare class AssociatedMembers {
 
 export declare class Events {
   readonly id: string;
-  readonly name?: string | null;
+  readonly name: string;
   readonly type?: EventTypes | keyof typeof EventTypes | null;
-  readonly description?: string | null;
+  readonly description: string;
   readonly discipline?: Disciplines | keyof typeof Disciplines | null;
   readonly starting_date?: string | null;
   readonly duration?: string | null;
   readonly location?: string | null;
   readonly capacity?: number | null;
   readonly image?: string | null;
-  readonly category?: Categories | keyof typeof Categories | null;
+  readonly category: Categories | keyof typeof Categories;
   readonly price?: number | null;
   readonly AssociatedMembers?: (AssociatedMembersEvents | null)[] | null;
   readonly createdAt?: string | null;
