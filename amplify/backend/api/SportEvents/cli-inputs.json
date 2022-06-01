@@ -3,7 +3,7 @@
   "serviceConfiguration": {
     "apiName": "SportEvents",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "/tmp/amplify-4e709e71-9d25-4d97-88ad-ef0aef76b376/amplify/backend/api/SportEvents/schema.graphql",
+    "gqlSchemaPath": "/tmp/amplify-1b9ed1df-b0e3-4d98-af1f-568e752e6297/amplify/backend/api/SportEvents/schema.graphql",
     "defaultAuthType": {
       "mode": "API_KEY",
       "keyDescription": "api key description",

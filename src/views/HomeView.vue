@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import HelloWorld from "../components/HelloWorld.vue";
+import HelloComponent from "../components/HelloComponent.vue";
 </script>
 
 <template>
   <main>
-    <HelloWorld msg="Hello!" />
+    <HelloComponent msg="Welcome to SportEvent" />
+    <button>
+      <router-link to="/calendar">Go to calendar</router-link>
+    </button>
   </main>
 </template>

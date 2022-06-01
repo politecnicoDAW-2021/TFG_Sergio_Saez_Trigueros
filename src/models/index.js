@@ -2,6 +2,12 @@
 import { initSchema } from '@aws-amplify/datastore';
 import { schema } from './schema';
 
+const Genders = {
+  "MALE": "MALE",
+  "FEMALE": "FEMALE",
+  "OTHER": "OTHER"
+};
+
 const EventTypes = {
   "TRAINING": "TRAINING",
   "CHAMPIONSHIP": "CHAMPIONSHIP",
@@ -21,14 +27,14 @@ const Categories = {
   "ALL": "ALL"
 };
 
-const { Clubs, Users, AssociatedMembers, Events, AssociatedMembersEvents } = initSchema(schema);
+const { AssociatedMembers, Events, Clubs, AssociatedMembersEvents } = initSchema(schema);
 
 export {
-  Clubs,
-  Users,
   AssociatedMembers,
   Events,
+  Clubs,
   AssociatedMembersEvents,
+  Genders,
   EventTypes,
   Disciplines,
   Categories

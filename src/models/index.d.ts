@@ -1,5 +1,11 @@
 import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplify/datastore";
 
+export enum Genders {
+  MALE = "MALE",
+  FEMALE = "FEMALE",
+  OTHER = "OTHER"
+}
+
 export enum EventTypes {
   TRAINING = "TRAINING",
   CHAMPIONSHIP = "CHAMPIONSHIP",
@@ -21,14 +27,6 @@ export enum Categories {
 
 
 
-type ClubsMetaData = {
-  readOnlyFields: 'createdAt' | 'updatedAt';
-}
-
-type UsersMetaData = {
-  readOnlyFields: 'createdAt' | 'updatedAt';
-}
-
 type AssociatedMembersMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
@@ -37,50 +35,25 @@ type EventsMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
+type ClubsMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
 type AssociatedMembersEventsMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
-export declare class Clubs {
-  readonly id: string;
-  readonly name: string;
-  readonly location?: string | null;
-  readonly city: string;
-  readonly owner?: string | null;
-  readonly phone: string;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-  constructor(init: ModelInit<Clubs, ClubsMetaData>);
-  static copyOf(source: Clubs, mutator: (draft: MutableModel<Clubs, ClubsMetaData>) => MutableModel<Clubs, ClubsMetaData> | void): Clubs;
-}
-
-export declare class Users {
-  readonly id: string;
-  readonly username: string;
-  readonly profile_pic?: string | null;
-  readonly email: string;
-  readonly first_name?: string | null;
-  readonly last_name?: string | null;
-  readonly password: string;
-  readonly AssociatedMembers?: AssociatedMembers | null;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-  readonly usersAssociatedMembersId?: string | null;
-  constructor(init: ModelInit<Users, UsersMetaData>);
-  static copyOf(source: Users, mutator: (draft: MutableModel<Users, UsersMetaData>) => MutableModel<Users, UsersMetaData> | void): Users;
-}
-
 export declare class AssociatedMembers {
   readonly id: string;
-  readonly first_name: string;
-  readonly last_name: string;
-  readonly birth_date: string;
-  readonly gender?: string | null;
-  readonly email: string;
-  readonly events?: (AssociatedMembersEvents | null)[] | null;
+  readonly first_name?: string | null;
+  readonly last_name?: string | null;
+  readonly birth_date?: string | null;
+  readonly gender?: Genders | keyof typeof Genders | null;
+  readonly email?: string | null;
   readonly address?: string | null;
   readonly city?: string | null;
-  readonly phone: string;
+  readonly phone?: string | null;
+  readonly events?: (AssociatedMembersEvents | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<AssociatedMembers, AssociatedMembersMetaData>);
@@ -89,22 +62,35 @@ export declare class AssociatedMembers {
 
 export declare class Events {
   readonly id: string;
-  readonly name: string;
+  readonly name?: string | null;
   readonly type?: EventTypes | keyof typeof EventTypes | null;
-  readonly description: string;
+  readonly description?: string | null;
   readonly discipline?: Disciplines | keyof typeof Disciplines | null;
   readonly starting_date?: string | null;
-  readonly duration?: string | null;
+  readonly end_date?: string | null;
   readonly location?: string | null;
   readonly capacity?: number | null;
   readonly image?: string | null;
-  readonly category: Categories | keyof typeof Categories;
+  readonly category?: Disciplines | keyof typeof Disciplines | null;
   readonly price?: number | null;
   readonly AssociatedMembers?: (AssociatedMembersEvents | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<Events, EventsMetaData>);
   static copyOf(source: Events, mutator: (draft: MutableModel<Events, EventsMetaData>) => MutableModel<Events, EventsMetaData> | void): Events;
+}
+
+export declare class Clubs {
+  readonly id: string;
+  readonly name?: string | null;
+  readonly address?: string | null;
+  readonly city?: string | null;
+  readonly owner?: string | null;
+  readonly phone?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  constructor(init: ModelInit<Clubs, ClubsMetaData>);
+  static copyOf(source: Clubs, mutator: (draft: MutableModel<Clubs, ClubsMetaData>) => MutableModel<Clubs, ClubsMetaData> | void): Clubs;
 }
 
 export declare class AssociatedMembersEvents {

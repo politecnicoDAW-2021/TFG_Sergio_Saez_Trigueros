@@ -35,13 +35,14 @@
         ],
         "signupAttributes": [
           "EMAIL",
-          "NAME"
+          "NICKNAME"
         ],
         "passwordProtectionSettings": {
           "passwordPolicyMinLength": 8,
           "passwordPolicyCharacters": [
             "REQUIRES_LOWERCASE",
-            "REQUIRES_NUMBERS"
+            "REQUIRES_NUMBERS",
+            "REQUIRES_UPPERCASE"
           ]
         },
         "mfaConfiguration": "OFF",

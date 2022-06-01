@@ -1,21 +1,41 @@
-type Clubs @model @auth(rules: [{allow: public}]) {
-  id: ID!
-  name: String!
-  location: String
-  city: String!
-  owner: String
-  phone: String!
+enum Genders {
+  MALE
+  FEMALE
+  OTHER
 }
 
-type Users @model @auth(rules: [{allow: public}]) {
+type AssociatedMembers @model @auth(rules: [{allow: public}]) {
   id: ID!
-  username: String!
-  profile_pic: String
-  email: AWSEmail!
   first_name: String
   last_name: String
-  password: String!
-  AssociatedMembers: AssociatedMembers @hasOne
+  birth_date: AWSDate
+  gender: Genders
+  email: AWSEmail
+  address: String
+  city: String
+  phone: String
+  events: [Events] @manyToMany(relationName: "AssociatedMembersEvents")
+}
+
+type Clubs @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  address: String
+  city: String
+  owner: String
+  phone: String
+}
+
+enum EventTypes {
+  TRAINING
+  CHAMPIONSHIP
+  SEMINAR
+}
+
+enum Disciplines {
+  KUMITE
+  KATA
+  TRADITIONAL_KARATE
 }
 
 enum Categories {
@@ -25,44 +45,19 @@ enum Categories {
   ALL
 }
 
-enum Disciplines {
-  KUMITE
-  KATA
-  TRADITIONAL_KARATE
-}
-
-enum EventTypes {
-  TRAINING
-  CHAMPIONSHIP
-  SEMINAR
-}
-
 type Events @model @auth(rules: [{allow: public}]) {
   id: ID!
-  name: String!
+  name: String
   type: EventTypes
-  description: String!
+  description: String
   discipline: Disciplines
-  starting_date: AWSDate
-  duration: String
+  starting_date: AWSDateTime
+  end_date: AWSDateTime
   location: String
   capacity: Int
   image: String
-  category: Categories!
+  category: Disciplines
   price: Float
   AssociatedMembers: [AssociatedMembers] @manyToMany(relationName: "AssociatedMembersEvents")
-}
-
-type AssociatedMembers @model @auth(rules: [{allow: public}]) {
-  id: ID!
-  first_name: String!
-  last_name: String!
-  birth_date: String!
-  gender: String
-  email: AWSEmail!
-  events: [Events] @manyToMany(relationName: "AssociatedMembersEvents")
-  address: String
-  city: String
-  phone: String!
 }
  
