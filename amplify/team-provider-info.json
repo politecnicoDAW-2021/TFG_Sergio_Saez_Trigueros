@@ -10,6 +10,11 @@
       "StackName": "amplify-sportevents-staging-212705",
       "StackId": "arn:aws:cloudformation:eu-west-2:219583727955:stack/amplify-sportevents-staging-212705/c0241f70-e2ba-11ec-a050-02b63aaaffee",
       "AmplifyAppId": "d2tvlssu7ms5jc"
+    },
+    "categories": {
+      "auth": {
+        "SportEvents": {}
+      }
     }
   }
 }
