@@ -1,129 +1,5 @@
 export const schema = {
     "models": {
-        "AssociatedMembers": {
-            "name": "AssociatedMembers",
-            "fields": {
-                "id": {
-                    "name": "id",
-                    "isArray": false,
-                    "type": "ID",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "first_name": {
-                    "name": "first_name",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "last_name": {
-                    "name": "last_name",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "birth_date": {
-                    "name": "birth_date",
-                    "isArray": false,
-                    "type": "AWSDate",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "gender": {
-                    "name": "gender",
-                    "isArray": false,
-                    "type": {
-                        "enum": "Genders"
-                    },
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "email": {
-                    "name": "email",
-                    "isArray": false,
-                    "type": "AWSEmail",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "address": {
-                    "name": "address",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "city": {
-                    "name": "city",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "phone": {
-                    "name": "phone",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "events": {
-                    "name": "events",
-                    "isArray": true,
-                    "type": {
-                        "model": "AssociatedMembersEvents"
-                    },
-                    "isRequired": false,
-                    "attributes": [],
-                    "isArrayNullable": true,
-                    "association": {
-                        "connectionType": "HAS_MANY",
-                        "associatedWith": "associatedMembers"
-                    }
-                },
-                "createdAt": {
-                    "name": "createdAt",
-                    "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isReadOnly": true
-                },
-                "updatedAt": {
-                    "name": "updatedAt",
-                    "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isReadOnly": true
-                }
-            },
-            "syncable": true,
-            "pluralName": "AssociatedMembers",
-            "attributes": [
-                {
-                    "type": "model",
-                    "properties": {}
-                },
-                {
-                    "type": "auth",
-                    "properties": {
-                        "rules": [
-                            {
-                                "allow": "public",
-                                "operations": [
-                                    "create",
-                                    "update",
-                                    "delete",
-                                    "read"
-                                ]
-                            }
-                        ]
-                    }
-                }
-            ]
-        },
         "Events": {
             "name": "Events",
             "fields": {
@@ -138,7 +14,7 @@ export const schema = {
                     "name": "name",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "type": {
@@ -147,14 +23,14 @@ export const schema = {
                     "type": {
                         "enum": "EventTypes"
                     },
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "description": {
                     "name": "description",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "discipline": {
@@ -163,34 +39,34 @@ export const schema = {
                     "type": {
                         "enum": "Disciplines"
                     },
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "starting_date": {
                     "name": "starting_date",
                     "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
+                    "type": "AWSTime",
+                    "isRequired": true,
                     "attributes": []
                 },
-                "end_date": {
-                    "name": "end_date",
+                "starting_time": {
+                    "name": "starting_time",
                     "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
+                    "type": "AWSTime",
+                    "isRequired": true,
                     "attributes": []
                 },
                 "location": {
                     "name": "location",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "capacity": {
                     "name": "capacity",
                     "isArray": false,
-                    "type": "Int",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -205,9 +81,9 @@ export const schema = {
                     "name": "category",
                     "isArray": false,
                     "type": {
-                        "enum": "Disciplines"
+                        "enum": "Categories"
                     },
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "price": {
@@ -230,6 +106,20 @@ export const schema = {
                         "connectionType": "HAS_MANY",
                         "associatedWith": "events"
                     }
+                },
+                "ending_date": {
+                    "name": "ending_date",
+                    "isArray": false,
+                    "type": "AWSDate",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "ending_time": {
+                    "name": "ending_time",
+                    "isArray": false,
+                    "type": "AWSTime",
+                    "isRequired": true,
+                    "attributes": []
                 },
                 "createdAt": {
                     "name": "createdAt",
@@ -273,6 +163,153 @@ export const schema = {
                 }
             ]
         },
+        "AssociatedMembers": {
+            "name": "AssociatedMembers",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "first_name": {
+                    "name": "first_name",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "last_name": {
+                    "name": "last_name",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "birth_date": {
+                    "name": "birth_date",
+                    "isArray": false,
+                    "type": "AWSDate",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "gender": {
+                    "name": "gender",
+                    "isArray": false,
+                    "type": {
+                        "enum": "Genders"
+                    },
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "email": {
+                    "name": "email",
+                    "isArray": false,
+                    "type": "AWSEmail",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "address": {
+                    "name": "address",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "city": {
+                    "name": "city",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "phone": {
+                    "name": "phone",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "clubID": {
+                    "name": "clubID",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "events": {
+                    "name": "events",
+                    "isArray": true,
+                    "type": {
+                        "model": "AssociatedMembersEvents"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": "associatedMembers"
+                    }
+                },
+                "userId": {
+                    "name": "userId",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                }
+            },
+            "syncable": true,
+            "pluralName": "AssociatedMembers",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {}
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byClubs",
+                        "fields": [
+                            "clubID"
+                        ]
+                    }
+                },
+                {
+                    "type": "auth",
+                    "properties": {
+                        "rules": [
+                            {
+                                "allow": "public",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
         "Clubs": {
             "name": "Clubs",
             "fields": {
@@ -287,7 +324,7 @@ export const schema = {
                     "name": "name",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "address": {
@@ -301,20 +338,55 @@ export const schema = {
                     "name": "city",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "owner": {
                     "name": "owner",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "phone": {
                     "name": "phone",
                     "isArray": false,
                     "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "AssociatedMembers": {
+                    "name": "AssociatedMembers",
+                    "isArray": true,
+                    "type": {
+                        "model": "AssociatedMembers"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": "clubID"
+                    }
+                },
+                "website": {
+                    "name": "website",
+                    "isArray": false,
+                    "type": "AWSURL",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "userId": {
+                    "name": "userId",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "email": {
+                    "name": "email",
+                    "isArray": false,
+                    "type": "AWSEmail",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -370,19 +442,6 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "associatedMembers": {
-                    "name": "associatedMembers",
-                    "isArray": false,
-                    "type": {
-                        "model": "AssociatedMembers"
-                    },
-                    "isRequired": true,
-                    "attributes": [],
-                    "association": {
-                        "connectionType": "BELONGS_TO",
-                        "targetName": "associatedMembersID"
-                    }
-                },
                 "events": {
                     "name": "events",
                     "isArray": false,
@@ -394,6 +453,19 @@ export const schema = {
                     "association": {
                         "connectionType": "BELONGS_TO",
                         "targetName": "eventsID"
+                    }
+                },
+                "associatedMembers": {
+                    "name": "associatedMembers",
+                    "isArray": false,
+                    "type": {
+                        "model": "AssociatedMembers"
+                    },
+                    "isRequired": true,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "BELONGS_TO",
+                        "targetName": "associatedMembersID"
                     }
                 },
                 "createdAt": {
@@ -423,18 +495,18 @@ export const schema = {
                 {
                     "type": "key",
                     "properties": {
-                        "name": "byAssociatedMembers",
+                        "name": "byEvents",
                         "fields": [
-                            "associatedMembersID"
+                            "eventsID"
                         ]
                     }
                 },
                 {
                     "type": "key",
                     "properties": {
-                        "name": "byEvents",
+                        "name": "byAssociatedMembers",
                         "fields": [
-                            "eventsID"
+                            "associatedMembersID"
                         ]
                     }
                 }
@@ -442,14 +514,6 @@ export const schema = {
         }
     },
     "enums": {
-        "Genders": {
-            "name": "Genders",
-            "values": [
-                "MALE",
-                "FEMALE",
-                "OTHER"
-            ]
-        },
         "EventTypes": {
             "name": "EventTypes",
             "values": [
@@ -474,8 +538,16 @@ export const schema = {
                 "SENIOR",
                 "ALL"
             ]
+        },
+        "Genders": {
+            "name": "Genders",
+            "values": [
+                "MALE",
+                "FEMALE",
+                "OTHER"
+            ]
         }
     },
     "nonModels": {},
-    "version": "9fdae6318bf78a92496a52fd7a2e1882"
+    "version": "a73903f5a70c66c928fd901573b71d80"
 };

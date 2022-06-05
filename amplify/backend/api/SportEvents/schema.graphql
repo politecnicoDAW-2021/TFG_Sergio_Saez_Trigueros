@@ -1,31 +1,3 @@
-enum Genders {
-  MALE
-  FEMALE
-  OTHER
-}
-
-type AssociatedMembers @model @auth(rules: [{allow: public}]) {
-  id: ID!
-  first_name: String
-  last_name: String
-  birth_date: AWSDate
-  gender: Genders
-  email: AWSEmail
-  address: String
-  city: String
-  phone: String
-  events: [Events] @manyToMany(relationName: "AssociatedMembersEvents")
-}
-
-type Clubs @model @auth(rules: [{allow: public}]) {
-  id: ID!
-  name: String
-  address: String
-  city: String
-  owner: String
-  phone: String
-}
-
 enum EventTypes {
   TRAINING
   CHAMPIONSHIP
@@ -47,17 +19,53 @@ enum Categories {
 
 type Events @model @auth(rules: [{allow: public}]) {
   id: ID!
-  name: String
-  type: EventTypes
-  description: String
-  discipline: Disciplines
-  starting_date: AWSDateTime
-  end_date: AWSDateTime
-  location: String
-  capacity: Int
+  name: String!
+  type: EventTypes!
+  description: String!
+  discipline: Disciplines!
+  starting_date: AWSTime!
+  starting_time: AWSTime!
+  location: String!
+  capacity: String
   image: String
-  category: Disciplines
+  category: Categories!
   price: Float
   AssociatedMembers: [AssociatedMembers] @manyToMany(relationName: "AssociatedMembersEvents")
+  ending_date: AWSDate!
+  ending_time: AWSTime!
+}
+
+type Clubs @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  address: String
+  city: String!
+  owner: String!
+  phone: String
+  AssociatedMembers: [AssociatedMembers] @hasMany(indexName: "byClubs", fields: ["id"])
+  website: AWSURL
+  userId: String
+  email: AWSEmail
+}
+
+enum Genders {
+  MALE
+  FEMALE
+  OTHER
+}
+
+type AssociatedMembers @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  first_name: String!
+  last_name: String!
+  birth_date: AWSDate!
+  gender: Genders
+  email: AWSEmail
+  address: String!
+  city: String
+  phone: String!
+  clubID: ID! @index(name: "byClubs")
+  events: [Events] @manyToMany(relationName: "AssociatedMembersEvents")
+  userId: String
 }
  

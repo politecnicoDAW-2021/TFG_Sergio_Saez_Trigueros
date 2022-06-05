@@ -9,7 +9,8 @@ onBeforeMount(async () => {
   currentUser.value = await authService.getCurrentUser().then((user) => {
     return user;
   });
-  console.log("current user", currentUser);
+  // currentUser.value.attributes.yoquese = "hola";
+  console.log("current user", currentUser.value.attributes);
 });
 </script>
 

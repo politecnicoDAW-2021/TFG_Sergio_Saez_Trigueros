@@ -3,7 +3,7 @@
   "cognitoConfig": {
     "identityPoolName": "testAuthIdentityPool",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "sportebc15db61",
+    "resourceNameTruncated": "sporte0ae71b94",
     "userPoolName": "SportEvents",
     "autoVerifiedAttributes": [
       "email"
@@ -21,6 +21,7 @@
     "passwordPolicyCharacters": [
       "Requires Lowercase",
       "Requires Numbers",
+      "Requires Symbols",
       "Requires Uppercase"
     ],
     "requiredAttributes": [
@@ -32,9 +33,9 @@
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [],
     "userpoolClientReadAttributes": [],
-    "userpoolClientLambdaRole": "SportEbc15db61_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "SportE0ae71b94_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "bc15db61",
+    "sharedId": "0ae71b94",
     "resourceName": "SportEvents",
     "authSelections": "identityPoolAndUserPool",
     "serviceName": "Cognito",

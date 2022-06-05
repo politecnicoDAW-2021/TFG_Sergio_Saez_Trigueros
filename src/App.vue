@@ -15,10 +15,20 @@ import CalendarVue from "./components/Calendar.vue";
       <button @click="signOut">Sign Out</button>
       <RouterView />
     </template>
-    <template #sign-in-header>
-      <h2>Sign in to your SportEvent</h2>
+    <template v-slot:sign-in-header>
+      <h3 class="amplify-heading">Sign in to your account</h3>
+    </template>
+    <template v-slot:sign-up-header>
+      <h3 class="amplify-heading">Create a new account</h3>
     </template>
   </authenticator>
 </template>
 
-<style></style>
+<style>
+.amplify-heading {
+  padding-left: 2.5rem;
+  padding-top: 1rem;
+  font-size: 2rem;
+  font-weight: bold;
+}
+</style>
