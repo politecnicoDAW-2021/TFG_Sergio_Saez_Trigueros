@@ -22,15 +22,11 @@ export const createEvents = /* GraphQL */ `
       price
       AssociatedMembers {
         nextToken
-        startedAt
       }
       ending_date
       ending_time
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -54,15 +50,11 @@ export const updateEvents = /* GraphQL */ `
       price
       AssociatedMembers {
         nextToken
-        startedAt
       }
       ending_date
       ending_time
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -86,15 +78,11 @@ export const deleteEvents = /* GraphQL */ `
       price
       AssociatedMembers {
         nextToken
-        startedAt
       }
       ending_date
       ending_time
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -112,16 +100,12 @@ export const createClubs = /* GraphQL */ `
       phone
       AssociatedMembers {
         nextToken
-        startedAt
       }
       website
       userId
       email
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -139,16 +123,12 @@ export const updateClubs = /* GraphQL */ `
       phone
       AssociatedMembers {
         nextToken
-        startedAt
       }
       website
       userId
       email
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -166,16 +146,12 @@ export const deleteClubs = /* GraphQL */ `
       phone
       AssociatedMembers {
         nextToken
-        startedAt
       }
       website
       userId
       email
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -197,14 +173,10 @@ export const createAssociatedMembers = /* GraphQL */ `
       clubID
       events {
         nextToken
-        startedAt
       }
       userId
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -226,14 +198,10 @@ export const updateAssociatedMembers = /* GraphQL */ `
       clubID
       events {
         nextToken
-        startedAt
       }
       userId
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -255,14 +223,10 @@ export const deleteAssociatedMembers = /* GraphQL */ `
       clubID
       events {
         nextToken
-        startedAt
       }
       userId
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -292,9 +256,6 @@ export const createAssociatedMembersEvents = /* GraphQL */ `
         ending_time
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       associatedMembers {
         id
@@ -310,15 +271,9 @@ export const createAssociatedMembersEvents = /* GraphQL */ `
         userId
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -348,9 +303,6 @@ export const updateAssociatedMembersEvents = /* GraphQL */ `
         ending_time
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       associatedMembers {
         id
@@ -366,15 +318,9 @@ export const updateAssociatedMembersEvents = /* GraphQL */ `
         userId
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -404,9 +350,6 @@ export const deleteAssociatedMembersEvents = /* GraphQL */ `
         ending_time
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       associatedMembers {
         id
@@ -422,15 +365,9 @@ export const deleteAssociatedMembersEvents = /* GraphQL */ `
         userId
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;

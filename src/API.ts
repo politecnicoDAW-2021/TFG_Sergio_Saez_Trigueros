@@ -17,7 +17,6 @@ export type CreateEventsInput = {
   price?: number | null,
   ending_date: string,
   ending_time: string,
-  _version?: number | null,
 };
 
 export enum EventTypes {
@@ -147,16 +146,12 @@ export type Events = {
   ending_time: string,
   createdAt: string,
   updatedAt: string,
-  _version: number,
-  _deleted?: boolean | null,
-  _lastChangedAt: number,
 };
 
 export type ModelAssociatedMembersEventsConnection = {
   __typename: "ModelAssociatedMembersEventsConnection",
   items:  Array<AssociatedMembersEvents | null >,
   nextToken?: string | null,
-  startedAt?: number | null,
 };
 
 export type AssociatedMembersEvents = {
@@ -168,9 +163,6 @@ export type AssociatedMembersEvents = {
   associatedMembers: AssociatedMembers,
   createdAt: string,
   updatedAt: string,
-  _version: number,
-  _deleted?: boolean | null,
-  _lastChangedAt: number,
 };
 
 export type AssociatedMembers = {
@@ -189,9 +181,6 @@ export type AssociatedMembers = {
   userId?: string | null,
   createdAt: string,
   updatedAt: string,
-  _version: number,
-  _deleted?: boolean | null,
-  _lastChangedAt: number,
 };
 
 export enum Genders {
@@ -216,12 +205,10 @@ export type UpdateEventsInput = {
   price?: number | null,
   ending_date?: string | null,
   ending_time?: string | null,
-  _version?: number | null,
 };
 
 export type DeleteEventsInput = {
   id: string,
-  _version?: number | null,
 };
 
 export type CreateClubsInput = {
@@ -234,7 +221,6 @@ export type CreateClubsInput = {
   website?: string | null,
   userId?: string | null,
   email?: string | null,
-  _version?: number | null,
 };
 
 export type ModelClubsConditionInput = {
@@ -265,16 +251,12 @@ export type Clubs = {
   email?: string | null,
   createdAt: string,
   updatedAt: string,
-  _version: number,
-  _deleted?: boolean | null,
-  _lastChangedAt: number,
 };
 
 export type ModelAssociatedMembersConnection = {
   __typename: "ModelAssociatedMembersConnection",
   items:  Array<AssociatedMembers | null >,
   nextToken?: string | null,
-  startedAt?: number | null,
 };
 
 export type UpdateClubsInput = {
@@ -287,12 +269,10 @@ export type UpdateClubsInput = {
   website?: string | null,
   userId?: string | null,
   email?: string | null,
-  _version?: number | null,
 };
 
 export type DeleteClubsInput = {
   id: string,
-  _version?: number | null,
 };
 
 export type CreateAssociatedMembersInput = {
@@ -307,7 +287,6 @@ export type CreateAssociatedMembersInput = {
   phone: string,
   clubID: string,
   userId?: string | null,
-  _version?: number | null,
 };
 
 export type ModelAssociatedMembersConditionInput = {
@@ -359,19 +338,16 @@ export type UpdateAssociatedMembersInput = {
   phone?: string | null,
   clubID?: string | null,
   userId?: string | null,
-  _version?: number | null,
 };
 
 export type DeleteAssociatedMembersInput = {
   id: string,
-  _version?: number | null,
 };
 
 export type CreateAssociatedMembersEventsInput = {
   id?: string | null,
   eventsID: string,
   associatedMembersID: string,
-  _version?: number | null,
 };
 
 export type ModelAssociatedMembersEventsConditionInput = {
@@ -386,12 +362,10 @@ export type UpdateAssociatedMembersEventsInput = {
   id: string,
   eventsID?: string | null,
   associatedMembersID?: string | null,
-  _version?: number | null,
 };
 
 export type DeleteAssociatedMembersEventsInput = {
   id: string,
-  _version?: number | null,
 };
 
 export type ModelEventsFilterInput = {
@@ -418,7 +392,6 @@ export type ModelEventsConnection = {
   __typename: "ModelEventsConnection",
   items:  Array<Events | null >,
   nextToken?: string | null,
-  startedAt?: number | null,
 };
 
 export type ModelClubsFilterInput = {
@@ -440,7 +413,6 @@ export type ModelClubsConnection = {
   __typename: "ModelClubsConnection",
   items:  Array<Clubs | null >,
   nextToken?: string | null,
-  startedAt?: number | null,
 };
 
 export type ModelAssociatedMembersFilterInput = {
@@ -492,15 +464,11 @@ export type CreateEventsMutation = {
     AssociatedMembers?:  {
       __typename: "ModelAssociatedMembersEventsConnection",
       nextToken?: string | null,
-      startedAt?: number | null,
     } | null,
     ending_date: string,
     ending_time: string,
     createdAt: string,
     updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
   } | null,
 };
 
@@ -527,15 +495,11 @@ export type UpdateEventsMutation = {
     AssociatedMembers?:  {
       __typename: "ModelAssociatedMembersEventsConnection",
       nextToken?: string | null,
-      startedAt?: number | null,
     } | null,
     ending_date: string,
     ending_time: string,
     createdAt: string,
     updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
   } | null,
 };
 
@@ -562,15 +526,11 @@ export type DeleteEventsMutation = {
     AssociatedMembers?:  {
       __typename: "ModelAssociatedMembersEventsConnection",
       nextToken?: string | null,
-      startedAt?: number | null,
     } | null,
     ending_date: string,
     ending_time: string,
     createdAt: string,
     updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
   } | null,
 };
 
@@ -591,16 +551,12 @@ export type CreateClubsMutation = {
     AssociatedMembers?:  {
       __typename: "ModelAssociatedMembersConnection",
       nextToken?: string | null,
-      startedAt?: number | null,
     } | null,
     website?: string | null,
     userId?: string | null,
     email?: string | null,
     createdAt: string,
     updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
   } | null,
 };
 
@@ -621,16 +577,12 @@ export type UpdateClubsMutation = {
     AssociatedMembers?:  {
       __typename: "ModelAssociatedMembersConnection",
       nextToken?: string | null,
-      startedAt?: number | null,
     } | null,
     website?: string | null,
     userId?: string | null,
     email?: string | null,
     createdAt: string,
     updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
   } | null,
 };
 
@@ -651,16 +603,12 @@ export type DeleteClubsMutation = {
     AssociatedMembers?:  {
       __typename: "ModelAssociatedMembersConnection",
       nextToken?: string | null,
-      startedAt?: number | null,
     } | null,
     website?: string | null,
     userId?: string | null,
     email?: string | null,
     createdAt: string,
     updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
   } | null,
 };
 
@@ -685,14 +633,10 @@ export type CreateAssociatedMembersMutation = {
     events?:  {
       __typename: "ModelAssociatedMembersEventsConnection",
       nextToken?: string | null,
-      startedAt?: number | null,
     } | null,
     userId?: string | null,
     createdAt: string,
     updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
   } | null,
 };
 
@@ -717,14 +661,10 @@ export type UpdateAssociatedMembersMutation = {
     events?:  {
       __typename: "ModelAssociatedMembersEventsConnection",
       nextToken?: string | null,
-      startedAt?: number | null,
     } | null,
     userId?: string | null,
     createdAt: string,
     updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
   } | null,
 };
 
@@ -749,14 +689,10 @@ export type DeleteAssociatedMembersMutation = {
     events?:  {
       __typename: "ModelAssociatedMembersEventsConnection",
       nextToken?: string | null,
-      startedAt?: number | null,
     } | null,
     userId?: string | null,
     createdAt: string,
     updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
   } | null,
 };
 
@@ -789,9 +725,6 @@ export type CreateAssociatedMembersEventsMutation = {
       ending_time: string,
       createdAt: string,
       updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
     },
     associatedMembers:  {
       __typename: "AssociatedMembers",
@@ -808,15 +741,9 @@ export type CreateAssociatedMembersEventsMutation = {
       userId?: string | null,
       createdAt: string,
       updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
     },
     createdAt: string,
     updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
   } | null,
 };
 
@@ -849,9 +776,6 @@ export type UpdateAssociatedMembersEventsMutation = {
       ending_time: string,
       createdAt: string,
       updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
     },
     associatedMembers:  {
       __typename: "AssociatedMembers",
@@ -868,15 +792,9 @@ export type UpdateAssociatedMembersEventsMutation = {
       userId?: string | null,
       createdAt: string,
       updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
     },
     createdAt: string,
     updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
   } | null,
 };
 
@@ -909,9 +827,6 @@ export type DeleteAssociatedMembersEventsMutation = {
       ending_time: string,
       createdAt: string,
       updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
     },
     associatedMembers:  {
       __typename: "AssociatedMembers",
@@ -928,15 +843,9 @@ export type DeleteAssociatedMembersEventsMutation = {
       userId?: string | null,
       createdAt: string,
       updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
     },
     createdAt: string,
     updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
   } | null,
 };
 
@@ -962,15 +871,11 @@ export type GetEventsQuery = {
     AssociatedMembers?:  {
       __typename: "ModelAssociatedMembersEventsConnection",
       nextToken?: string | null,
-      startedAt?: number | null,
     } | null,
     ending_date: string,
     ending_time: string,
     createdAt: string,
     updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
   } | null,
 };
 
@@ -1001,49 +906,8 @@ export type ListEventsQuery = {
       ending_time: string,
       createdAt: string,
       updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
     } | null >,
     nextToken?: string | null,
-    startedAt?: number | null,
-  } | null,
-};
-
-export type SyncEventsQueryVariables = {
-  filter?: ModelEventsFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
-  lastSync?: number | null,
-};
-
-export type SyncEventsQuery = {
-  syncEvents?:  {
-    __typename: "ModelEventsConnection",
-    items:  Array< {
-      __typename: "Events",
-      id: string,
-      name: string,
-      type: EventTypes,
-      description: string,
-      discipline: Disciplines,
-      starting_date: string,
-      starting_time: string,
-      location: string,
-      capacity?: string | null,
-      image?: string | null,
-      category: Categories,
-      price?: number | null,
-      ending_date: string,
-      ending_time: string,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-    } | null >,
-    nextToken?: string | null,
-    startedAt?: number | null,
   } | null,
 };
 
@@ -1063,16 +927,12 @@ export type GetClubsQuery = {
     AssociatedMembers?:  {
       __typename: "ModelAssociatedMembersConnection",
       nextToken?: string | null,
-      startedAt?: number | null,
     } | null,
     website?: string | null,
     userId?: string | null,
     email?: string | null,
     createdAt: string,
     updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
   } | null,
 };
 
@@ -1098,44 +958,8 @@ export type ListClubsQuery = {
       email?: string | null,
       createdAt: string,
       updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
     } | null >,
     nextToken?: string | null,
-    startedAt?: number | null,
-  } | null,
-};
-
-export type SyncClubsQueryVariables = {
-  filter?: ModelClubsFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
-  lastSync?: number | null,
-};
-
-export type SyncClubsQuery = {
-  syncClubs?:  {
-    __typename: "ModelClubsConnection",
-    items:  Array< {
-      __typename: "Clubs",
-      id: string,
-      name: string,
-      address?: string | null,
-      city: string,
-      owner: string,
-      phone?: string | null,
-      website?: string | null,
-      userId?: string | null,
-      email?: string | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-    } | null >,
-    nextToken?: string | null,
-    startedAt?: number | null,
   } | null,
 };
 
@@ -1159,14 +983,10 @@ export type GetAssociatedMembersQuery = {
     events?:  {
       __typename: "ModelAssociatedMembersEventsConnection",
       nextToken?: string | null,
-      startedAt?: number | null,
     } | null,
     userId?: string | null,
     createdAt: string,
     updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
   } | null,
 };
 
@@ -1194,46 +1014,8 @@ export type ListAssociatedMembersQuery = {
       userId?: string | null,
       createdAt: string,
       updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
     } | null >,
     nextToken?: string | null,
-    startedAt?: number | null,
-  } | null,
-};
-
-export type SyncAssociatedMembersQueryVariables = {
-  filter?: ModelAssociatedMembersFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
-  lastSync?: number | null,
-};
-
-export type SyncAssociatedMembersQuery = {
-  syncAssociatedMembers?:  {
-    __typename: "ModelAssociatedMembersConnection",
-    items:  Array< {
-      __typename: "AssociatedMembers",
-      id: string,
-      first_name: string,
-      last_name: string,
-      birth_date: string,
-      gender?: Genders | null,
-      email?: string | null,
-      address: string,
-      city?: string | null,
-      phone: string,
-      clubID: string,
-      userId?: string | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-    } | null >,
-    nextToken?: string | null,
-    startedAt?: number | null,
   } | null,
 };
 
@@ -1265,9 +1047,6 @@ export type GetAssociatedMembersEventsQuery = {
       ending_time: string,
       createdAt: string,
       updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
     },
     associatedMembers:  {
       __typename: "AssociatedMembers",
@@ -1284,15 +1063,9 @@ export type GetAssociatedMembersEventsQuery = {
       userId?: string | null,
       createdAt: string,
       updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
     },
     createdAt: string,
     updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
   } | null,
 };
 
@@ -1312,38 +1085,8 @@ export type ListAssociatedMembersEventsQuery = {
       associatedMembersID: string,
       createdAt: string,
       updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
     } | null >,
     nextToken?: string | null,
-    startedAt?: number | null,
-  } | null,
-};
-
-export type SyncAssociatedMembersEventsQueryVariables = {
-  filter?: ModelAssociatedMembersEventsFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
-  lastSync?: number | null,
-};
-
-export type SyncAssociatedMembersEventsQuery = {
-  syncAssociatedMembersEvents?:  {
-    __typename: "ModelAssociatedMembersEventsConnection",
-    items:  Array< {
-      __typename: "AssociatedMembersEvents",
-      id: string,
-      eventsID: string,
-      associatedMembersID: string,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-    } | null >,
-    nextToken?: string | null,
-    startedAt?: number | null,
   } | null,
 };
 
@@ -1365,15 +1108,11 @@ export type OnCreateEventsSubscription = {
     AssociatedMembers?:  {
       __typename: "ModelAssociatedMembersEventsConnection",
       nextToken?: string | null,
-      startedAt?: number | null,
     } | null,
     ending_date: string,
     ending_time: string,
     createdAt: string,
     updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
   } | null,
 };
 
@@ -1395,15 +1134,11 @@ export type OnUpdateEventsSubscription = {
     AssociatedMembers?:  {
       __typename: "ModelAssociatedMembersEventsConnection",
       nextToken?: string | null,
-      startedAt?: number | null,
     } | null,
     ending_date: string,
     ending_time: string,
     createdAt: string,
     updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
   } | null,
 };
 
@@ -1425,15 +1160,11 @@ export type OnDeleteEventsSubscription = {
     AssociatedMembers?:  {
       __typename: "ModelAssociatedMembersEventsConnection",
       nextToken?: string | null,
-      startedAt?: number | null,
     } | null,
     ending_date: string,
     ending_time: string,
     createdAt: string,
     updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
   } | null,
 };
 
@@ -1449,16 +1180,12 @@ export type OnCreateClubsSubscription = {
     AssociatedMembers?:  {
       __typename: "ModelAssociatedMembersConnection",
       nextToken?: string | null,
-      startedAt?: number | null,
     } | null,
     website?: string | null,
     userId?: string | null,
     email?: string | null,
     createdAt: string,
     updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
   } | null,
 };
 
@@ -1474,16 +1201,12 @@ export type OnUpdateClubsSubscription = {
     AssociatedMembers?:  {
       __typename: "ModelAssociatedMembersConnection",
       nextToken?: string | null,
-      startedAt?: number | null,
     } | null,
     website?: string | null,
     userId?: string | null,
     email?: string | null,
     createdAt: string,
     updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
   } | null,
 };
 
@@ -1499,16 +1222,12 @@ export type OnDeleteClubsSubscription = {
     AssociatedMembers?:  {
       __typename: "ModelAssociatedMembersConnection",
       nextToken?: string | null,
-      startedAt?: number | null,
     } | null,
     website?: string | null,
     userId?: string | null,
     email?: string | null,
     createdAt: string,
     updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
   } | null,
 };
 
@@ -1528,14 +1247,10 @@ export type OnCreateAssociatedMembersSubscription = {
     events?:  {
       __typename: "ModelAssociatedMembersEventsConnection",
       nextToken?: string | null,
-      startedAt?: number | null,
     } | null,
     userId?: string | null,
     createdAt: string,
     updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
   } | null,
 };
 
@@ -1555,14 +1270,10 @@ export type OnUpdateAssociatedMembersSubscription = {
     events?:  {
       __typename: "ModelAssociatedMembersEventsConnection",
       nextToken?: string | null,
-      startedAt?: number | null,
     } | null,
     userId?: string | null,
     createdAt: string,
     updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
   } | null,
 };
 
@@ -1582,14 +1293,10 @@ export type OnDeleteAssociatedMembersSubscription = {
     events?:  {
       __typename: "ModelAssociatedMembersEventsConnection",
       nextToken?: string | null,
-      startedAt?: number | null,
     } | null,
     userId?: string | null,
     createdAt: string,
     updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
   } | null,
 };
 
@@ -1617,9 +1324,6 @@ export type OnCreateAssociatedMembersEventsSubscription = {
       ending_time: string,
       createdAt: string,
       updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
     },
     associatedMembers:  {
       __typename: "AssociatedMembers",
@@ -1636,15 +1340,9 @@ export type OnCreateAssociatedMembersEventsSubscription = {
       userId?: string | null,
       createdAt: string,
       updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
     },
     createdAt: string,
     updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
   } | null,
 };
 
@@ -1672,9 +1370,6 @@ export type OnUpdateAssociatedMembersEventsSubscription = {
       ending_time: string,
       createdAt: string,
       updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
     },
     associatedMembers:  {
       __typename: "AssociatedMembers",
@@ -1691,15 +1386,9 @@ export type OnUpdateAssociatedMembersEventsSubscription = {
       userId?: string | null,
       createdAt: string,
       updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
     },
     createdAt: string,
     updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
   } | null,
 };
 
@@ -1727,9 +1416,6 @@ export type OnDeleteAssociatedMembersEventsSubscription = {
       ending_time: string,
       createdAt: string,
       updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
     },
     associatedMembers:  {
       __typename: "AssociatedMembers",
@@ -1746,14 +1432,8 @@ export type OnDeleteAssociatedMembersEventsSubscription = {
       userId?: string | null,
       createdAt: string,
       updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
     },
     createdAt: string,
     updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
   } | null,
 };

@@ -1,6 +1,6 @@
 import type { Clubs } from "@/API";
 import { createClubs, deleteClubs } from "@/graphql/mutations";
-import { listClubs, syncClubs } from "@/graphql/queries";
+import { listClubs } from "@/graphql/queries";
 import { API, graphqlOperation } from "aws-amplify";
 
 class ClubService {

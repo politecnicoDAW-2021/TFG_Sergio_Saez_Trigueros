@@ -1,23 +1,23 @@
 <script setup lang="ts">
+import { listClubs } from "@/graphql/queries";
 import { clubService } from "@/services/club.service";
+import { API, graphqlOperation } from "aws-amplify";
 import { onBeforeMount, ref } from "vue";
 import HelloComponent from "../components/HelloComponent.vue";
 
 const clubs = ref();
 
 function deleteClub() {
-  clubService.deleteClub("af1c61f9-80bd-4ae0-b5b3-eadedf4efbb1");
+  clubService.deleteClub("ce68afe4-04e5-47c1-99e0-0098bd6cc139");
 }
 
 function createClub() {
   clubService.createClub("test3", "Huelva", "Juan");
 }
 
-function loadClubs() {
-  clubService.getClubs().then((clubsData) => {
-    clubs.value = clubsData;
-    console.log(clubsData);
-  });
+async function loadClubs() {
+  const clubList = await API.graphql(graphqlOperation(listClubs));
+  clubs.value = clubList.data.listClubs.items;
 }
 
 onBeforeMount(() => {

@@ -19,15 +19,11 @@ export const getEvents = /* GraphQL */ `
       price
       AssociatedMembers {
         nextToken
-        startedAt
       }
       ending_date
       ending_time
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -55,51 +51,8 @@ export const listEvents = /* GraphQL */ `
         ending_time
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncEvents = /* GraphQL */ `
-  query SyncEvents(
-    $filter: ModelEventsFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncEvents(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        name
-        type
-        description
-        discipline
-        starting_date
-        starting_time
-        location
-        capacity
-        image
-        category
-        price
-        ending_date
-        ending_time
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -114,16 +67,12 @@ export const getClubs = /* GraphQL */ `
       phone
       AssociatedMembers {
         nextToken
-        startedAt
       }
       website
       userId
       email
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -146,46 +95,8 @@ export const listClubs = /* GraphQL */ `
         email
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncClubs = /* GraphQL */ `
-  query SyncClubs(
-    $filter: ModelClubsFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncClubs(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        name
-        address
-        city
-        owner
-        phone
-        website
-        userId
-        email
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -204,14 +115,10 @@ export const getAssociatedMembers = /* GraphQL */ `
       clubID
       events {
         nextToken
-        startedAt
       }
       userId
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -240,48 +147,8 @@ export const listAssociatedMembers = /* GraphQL */ `
         userId
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncAssociatedMembers = /* GraphQL */ `
-  query SyncAssociatedMembers(
-    $filter: ModelAssociatedMembersFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncAssociatedMembers(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        first_name
-        last_name
-        birth_date
-        gender
-        email
-        address
-        city
-        phone
-        clubID
-        userId
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -308,9 +175,6 @@ export const getAssociatedMembersEvents = /* GraphQL */ `
         ending_time
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       associatedMembers {
         id
@@ -326,15 +190,9 @@ export const getAssociatedMembersEvents = /* GraphQL */ `
         userId
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -355,40 +213,8 @@ export const listAssociatedMembersEvents = /* GraphQL */ `
         associatedMembersID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncAssociatedMembersEvents = /* GraphQL */ `
-  query SyncAssociatedMembersEvents(
-    $filter: ModelAssociatedMembersEventsFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncAssociatedMembersEvents(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        eventsID
-        associatedMembersID
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
     }
   }
 `;
