@@ -3,11 +3,10 @@
   "serviceConfiguration": {
     "apiName": "SportEvents",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "/tmp/amplify-3234bc2f-9d45-4203-a387-d33127c4fe0e/amplify/backend/api/SportEvents/schema.graphql",
+    "gqlSchemaPath": "/home/sergio/Projects/TFG_Sergio_Saez_Trigueros/amplify/backend/api/SportEvents/schema.graphql",
     "defaultAuthType": {
-      "mode": "API_KEY",
-      "keyDescription": "api key description",
-      "expirationTime": 30
+      "mode": "AMAZON_COGNITO_USER_POOLS",
+      "cognitoUserPoolId": "authSportEvents"
     },
     "additionalAuthTypes": [
       {

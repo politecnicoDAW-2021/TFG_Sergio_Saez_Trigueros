@@ -17,7 +17,7 @@ enum Categories {
   ALL
 }
 
-type Events @model @auth(rules: [{allow: public}]) {
+type Events @model @auth(rules: [{ allow: public }]) {
   id: ID!
   name: String!
   type: EventTypes!
@@ -30,19 +30,28 @@ type Events @model @auth(rules: [{allow: public}]) {
   image: String
   category: Categories!
   price: Float
-  AssociatedMembers: [AssociatedMembers] @manyToMany(relationName: "AssociatedMembersEvents")
+  AssociatedMembers: [AssociatedMembers]
+    @manyToMany(relationName: "AssociatedMembersEvents")
   ending_date: AWSDate!
   ending_time: AWSTime!
 }
 
-type Clubs @model @auth(rules: [{allow: public}]) {
+type Clubs
+  @model
+  @auth(
+    rules: [
+      { allow: public, operations: [read] }
+      { allow: groups, groups: ["Admin"], operations: [create, update, delete] }
+    ]
+  ) {
   id: ID!
   name: String!
   address: String
   city: String!
   owner: String!
   phone: String
-  AssociatedMembers: [AssociatedMembers] @hasMany(indexName: "byClubs", fields: ["id"])
+  AssociatedMembers: [AssociatedMembers]
+    @hasMany(indexName: "byClubs", fields: ["id"])
   website: AWSURL
   userId: String
   email: AWSEmail
@@ -54,7 +63,7 @@ enum Genders {
   OTHER
 }
 
-type AssociatedMembers @model @auth(rules: [{allow: public}]) {
+type AssociatedMembers @model @auth(rules: [{ allow: public }]) {
   id: ID!
   first_name: String!
   last_name: String!
@@ -68,4 +77,3 @@ type AssociatedMembers @model @auth(rules: [{allow: public}]) {
   events: [Events] @manyToMany(relationName: "AssociatedMembersEvents")
   userId: String
 }
- 

@@ -1,8 +1,18 @@
 import { Auth } from "aws-amplify";
 
 class AuthService {
-  getCurrentUser = () => {
-    return Auth.currentAuthenticatedUser();
+  getAuth = () => {
+    return Auth;
+  };
+
+  getUserGroup = () => {
+    return Auth.currentSession().then((session) => {
+      return session.accessToken.payload["cognito:groups"];
+    });
+  };
+
+  getCurrentUserId = () => {
+    return Auth.currentUserInfo().then((info) => info.username);
   };
 }
 

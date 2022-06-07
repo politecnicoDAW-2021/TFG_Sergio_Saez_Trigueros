@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Clubs } from "@/models";
 import { clubService } from "@/services/club.service";
 import { onBeforeMount, ref } from "vue";
 import HelloComponent from "../components/HelloComponent.vue";
@@ -7,7 +6,7 @@ import HelloComponent from "../components/HelloComponent.vue";
 const clubs = ref();
 
 function deleteClub() {
-  clubService.deleteClub("a3673469-87aa-4d4a-b2e1-d750aca66d92");
+  clubService.deleteClub("af1c61f9-80bd-4ae0-b5b3-eadedf4efbb1");
 }
 
 function createClub() {

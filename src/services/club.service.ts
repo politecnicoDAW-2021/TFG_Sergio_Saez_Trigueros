@@ -17,7 +17,7 @@ class ClubService {
     try {
       return API.graphql({
         query: deleteClubs,
-        variables: { input: { id: id, _version: 1 } },
+        variables: { input: { id: id } },
       });
     } catch (err) {
       console.error(err);
