@@ -4,10 +4,11 @@ import { listClubs } from "@/graphql/queries";
 import { API, graphqlOperation } from "aws-amplify";
 
 class ClubService {
-  getClubs = async () => {
+  getClubs = () => {
     try {
-      const clubList = await API.graphql(graphqlOperation(listClubs));
-      return clubList.data.listClubs.items;
+      return API.graphql({
+        query: listClubs,
+      });
     } catch (err) {
       console.error(err);
     }
@@ -24,24 +25,18 @@ class ClubService {
     }
   };
 
-  createClub = (name: string, city: string, owner: string) => {
+  createClub = ({ input }) => {
     try {
-      API.graphql({
+      return API.graphql({
         query: createClubs,
-        variables: { input: { name: name, city: city, owner: owner } },
+        variables: { input: input },
       });
     } catch (err) {
       console.log(err);
     }
   };
 
-  syncClubs = () => {
-    try {
-      API.graphql(graphqlOperation(syncClubs));
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  //TODO: Intentar hacer un metodo general para todo
 }
 
 export const clubService = new ClubService();

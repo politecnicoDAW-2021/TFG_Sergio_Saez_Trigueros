@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { listClubs } from "@/graphql/queries";
+import { authService } from "@/services/auth.service";
 import { clubService } from "@/services/club.service";
-import { API, graphqlOperation } from "aws-amplify";
 import { onBeforeMount, ref } from "vue";
 import HelloComponent from "../components/HelloComponent.vue";
 
@@ -15,20 +14,17 @@ function createClub() {
   clubService.createClub("test3", "Huelva", "Juan");
 }
 
-async function loadClubs() {
-  const clubList = await API.graphql(graphqlOperation(listClubs));
-  clubs.value = clubList.data.listClubs.items;
-}
-
-onBeforeMount(() => {
-  loadClubs();
+onBeforeMount(async () => {
+  clubService
+    .getClubs()
+    .then((clubsData) => (clubs.value = clubsData.data.listClubs.items));
 });
 </script>
 
 <template>
   <main>
     <HelloComponent msg="Welcome to SportEvent" />
-    <button @click="loadClubs()">Load clubs</button>
+    <button>Load clubs</button>
     <button @click="deleteClub()">Delete first</button>
     <button @click="createClub()">create club</button>
     <div v-for="club in clubs">
