@@ -3,16 +3,13 @@ import { RouterView } from "vue-router";
 import { Authenticator } from "@aws-amplify/ui-vue";
 import "@aws-amplify/ui-vue/styles.css";
 import HomeViewVue from "./views/HomeView.vue";
-import HelloComponentVue from "./components/HelloComponent.vue";
-import CalendarViewVue from "./views/CalendarView.vue";
-import CalendarVue from "./components/Calendar.vue";
+import NavBarVue from "./components/NavBar.vue";
 </script>
 
 <template>
-  <authenticator>
-    <template v-slot="{ user, signOut }">
-      <h1>Hello {{ user.attributes.nickname }}!</h1>
-      <button @click="signOut">Sign Out</button>
+  <authenticator class="auth">
+    <template v-slot="{ user }">
+      <nav-bar-vue :user="user.attributes.nickname"></nav-bar-vue>
       <RouterView />
     </template>
     <template v-slot:sign-in-header>
@@ -30,5 +27,9 @@ import CalendarVue from "./components/Calendar.vue";
   padding-top: 1rem;
   font-size: 2rem;
   font-weight: bold;
+}
+
+.auth {
+  margin-top: 3rem;
 }
 </style>
