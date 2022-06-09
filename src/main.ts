@@ -4,6 +4,8 @@ import App from "./App.vue";
 import router from "./router";
 import Amplify, { Auth } from "aws-amplify";
 import awsconfig from "./aws-exports";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/js/bootstrap.js";
 
 const app = createApp(App);
 
