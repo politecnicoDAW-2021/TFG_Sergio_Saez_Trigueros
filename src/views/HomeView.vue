@@ -7,7 +7,7 @@
   </main>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { authService } from "@/services/auth.service";
 import { clubService } from "@/services/club.service";
 import { onBeforeMount, ref } from "vue";

@@ -3,12 +3,15 @@
     class="navbar navbar-expand-lg navbar-light"
     style="background-color: var(--amplify-colors-brand-primary-20)"
   >
-    <router-link class="navbar-brand p-2" to="/">SportEvents</router-link>
+    <router-link class="navbar-brand p-2 b" to="/">SportEvents</router-link>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <router-link class="nav-link" to="/">Home</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link class="nav-link" to="/clubs">Clubs</router-link>
         </li>
         <li class="nav-item active">
           <router-link class="nav-link" to="/events">My events</router-link>
@@ -63,3 +66,13 @@ onBeforeMount(async () => {
   isAdmin.value = await authService.isAdmin();
 });
 </script>
+
+<style>
+nav {
+  height: 80px;
+}
+
+a {
+  font-size: 19px;
+}
+</style>

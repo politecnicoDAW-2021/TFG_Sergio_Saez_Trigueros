@@ -3,6 +3,8 @@ import { RouterView } from "vue-router";
 import { Authenticator } from "@aws-amplify/ui-vue";
 import "@aws-amplify/ui-vue/styles.css";
 import HomeViewVue from "./views/HomeView.vue";
+import ClubFormVue from "./components/ClubForm.vue";
+import ClubFormView from "./views/ClubFormView.vue";
 import NavBarVue from "./components/NavBar.vue";
 </script>
 
