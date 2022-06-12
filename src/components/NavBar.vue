@@ -1,8 +1,5 @@
 <template>
-  <nav
-    class="navbar navbar-expand-lg navbar-light"
-    style="background-color: var(--amplify-colors-brand-primary-20)"
-  >
+  <nav class="navbar navbar-expand-lg navbar-light bg-info">
     <router-link class="navbar-brand p-2 b" to="/">SportEvents</router-link>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -39,7 +36,7 @@
       </ul>
       <div class="ms-auto">
         <span class="navbar-text">{{ user }}</span>
-        <button class="btn btn-outline-info mx-3" @click="signOut()">
+        <button class="btn btn-outline-light mx-3" @click="signOut()">
           Sign Out
         </button>
       </div>

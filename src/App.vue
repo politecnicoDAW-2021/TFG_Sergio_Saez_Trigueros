@@ -34,4 +34,8 @@ import NavBarVue from "./components/NavBar.vue";
 .auth {
   margin-top: 3rem;
 }
+
+.body {
+  background-color: var(--amplify-colors-brand-primary-60);
+}
 </style>
