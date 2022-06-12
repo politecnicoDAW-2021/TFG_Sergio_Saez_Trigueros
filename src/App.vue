@@ -6,6 +6,7 @@ import HomeViewVue from "./views/HomeView.vue";
 import ClubFormVue from "./components/ClubForm.vue";
 import ClubFormView from "./views/ClubFormView.vue";
 import NavBarVue from "./components/NavBar.vue";
+import ClubCardVue from "./components/ClubCard.vue";
 </script>
 
 <template>
@@ -33,9 +34,5 @@ import NavBarVue from "./components/NavBar.vue";
 
 .auth {
   margin-top: 3rem;
-}
-
-.body {
-  background-color: var(--amplify-colors-brand-primary-60);
 }
 </style>

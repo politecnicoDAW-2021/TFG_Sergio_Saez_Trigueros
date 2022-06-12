@@ -46,7 +46,6 @@
 
 <script setup>
 import { authService } from "@/services/auth.service";
-import { computed } from "@vue/reactivity";
 import { onBeforeMount, ref } from "vue";
 
 defineProps({

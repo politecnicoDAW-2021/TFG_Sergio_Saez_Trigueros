@@ -59,7 +59,6 @@ export const listEvents = /* GraphQL */ `
 export const getClubs = /* GraphQL */ `
   query GetClubs($id: ID!) {
     getClubs(id: $id) {
-      id
       name
       address
       city
@@ -71,8 +70,6 @@ export const getClubs = /* GraphQL */ `
       website
       userId
       email
-      createdAt
-      updatedAt
     }
   }
 `;

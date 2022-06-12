@@ -1,6 +1,6 @@
-import type { Clubs } from "@/API";
 import { createClubs, deleteClubs } from "@/graphql/mutations";
-import { listClubs } from "@/graphql/queries";
+import { listClubs, getClubs } from "@/graphql/queries";
+import { Clubs } from "@/models";
 import { API } from "aws-amplify";
 
 class ClubService {
@@ -14,29 +14,26 @@ class ClubService {
     }
   };
 
-  deleteClub: any = (id: string) => {
-    try {
-      return API.graphql({
-        query: deleteClubs,
-        variables: { input: { id: id } },
-      });
-    } catch (err) {
-      console.error(err);
-    }
+  getClub = (id: string) => {
+    return API.graphql({
+      query: getClubs,
+      variables: { id: id },
+    });
   };
 
-  createClub = ({ input }) => {
-    try {
-      return API.graphql({
-        query: createClubs,
-        variables: { input: input },
-      });
-    } catch (err) {
-      console.log(err);
-    }
+  deleteClub = (id: string) => {
+    return API.graphql({
+      query: deleteClubs,
+      variables: { input: { id: id } },
+    });
   };
 
-  //TODO: Intentar hacer un metodo general para todo
+  createClub = (input) => {
+    return API.graphql({
+      query: createClubs,
+      variables: { input: input },
+    });
+  };
 }
 
 export const clubService = new ClubService();

@@ -19,18 +19,29 @@
       </p>
     </div>
     <div v-if="isAdmin" class="card-footer bg-light border-success">
-      Actions - Editar - Borrar
+      <button class="btn btn-warning" @click="goToEdit(club.id)">Edit</button>
+      <button class="btn btn-danger" @click="">Delete</button>
     </div>
   </div>
 </template>
 
 <script setup>
 import { Clubs } from "@/models";
+import { useRouter } from "vue-router";
 
 defineProps({
   club: Clubs,
   isAdmin: Boolean,
 });
+
+const router = useRouter();
+
+const goToEdit = (clubId) => {
+  router.push({
+    name: "clubForm",
+    params: { id: clubId },
+  });
+};
 </script>
 
 <style>
@@ -41,5 +52,10 @@ defineProps({
 
 label {
   font-weight: bold;
+}
+
+.card-footer {
+  display: flex;
+  gap: 1rem;
 }
 </style>
