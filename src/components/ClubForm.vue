@@ -104,18 +104,16 @@
         </div>
       </div>
     </div>
-    <div class="form-row d-flex justify-content-center align-items-end">
-      <div class="form-group col-6">
+    <div class="form-row d-flex align-items-end">
+      <div v-if="isEdit" class="form-group col-6">
         <label for="userId">User Id</label>
         <input
+          disabled
           class="form-control"
           id="userId"
-          placeholder="User Id"
+          placeholder="No linked user"
           v-model="clubData.userId"
         />
-      </div>
-      <div class="form-group col-6">
-        <button class="btn btn-light mx-3">Assign user</button>
       </div>
     </div>
 
@@ -131,7 +129,7 @@
 <script setup>
 import { clubService } from "@/services/club.service";
 import { computed } from "@vue/reactivity";
-import { reactive, ref, onMounted } from "vue";
+import { reactive, ref, onBeforeMount } from "vue";
 import { useRouter } from "vue-router";
 import useVuelidate from "@vuelidate/core";
 import {
@@ -201,7 +199,7 @@ const v$ = useVuelidate(rules, clubData);
 
 const title = ref(null);
 const router = useRouter();
-let isEdit = false;
+const isEdit = ref(false);
 
 const backToPrevious = (msgData = "") => {
   router.push({
@@ -212,12 +210,11 @@ const backToPrevious = (msgData = "") => {
 
 const submit = () => {
   v$.value.$touch();
-  console.log(v$.value);
   if (v$.value.$invalid) return;
-  if (isEdit) {
+  if (isEdit.value) {
     try {
-      console.log("edit payload:", { ...clubData, id: props.clubId });
       clubService.updateClub({ ...clubData, id: props.clubId });
+      backToPrevious(`Club ${clubData.name} updated successfully`);
       return;
     } catch (error) {}
   }
@@ -230,10 +227,10 @@ const submit = () => {
   }
 };
 
-onMounted(() => {
+onBeforeMount(() => {
   title.value = !props.clubId ? "Create" : "Edit";
   if (props.clubId) {
-    isEdit = true;
+    isEdit.value = true;
     clubService.getClub(props.clubId).then((data) => {
       let clubDataFromApi = data.data.getClubs;
       clubData.name = clubDataFromApi.name;

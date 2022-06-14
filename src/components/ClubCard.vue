@@ -23,6 +23,7 @@
         Edit
       </button>
       <button class="btn btn-danger" @click="openModal()">Delete</button>
+      <button class="btn btn-secondary">View members</button>
     </div>
   </div>
 </template>
