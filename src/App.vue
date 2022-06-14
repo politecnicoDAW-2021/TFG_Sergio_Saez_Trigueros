@@ -2,11 +2,15 @@
   <authenticator class="auth">
     <template class="bodyApp" v-slot="{ user }">
       <nav-bar-vue
+        v-if="renderNavbar"
         @open-link-modal="showModal = true"
         :user="user"
+        ref="navBar"
       ></nav-bar-vue>
       <account-link-modal-vue
+        :user="user"
         @close="closeModal()"
+        @save="linked()"
         v-if="showModal"
       ></account-link-modal-vue>
       <RouterView class="body" />
@@ -30,13 +34,29 @@ import ClubFormView from "./views/ClubFormView.vue";
 import NavBarVue from "./components/NavBar.vue";
 import ClubCardVue from "./components/ClubCard.vue";
 import AccountLinkModalVue from "./components/AccountLinkModal.vue";
-import { ref } from "vue";
+import { nextTick, ref } from "vue";
 
 const showModal = ref(false);
+const navBar = ref(null);
+const userLinked = ref(false);
+const renderNavbar = ref(true);
 
 const closeModal = () => {
   showModal.value = false;
   document.getElementsByTagName("body")[0].style = "overflow: auto";
+};
+
+const forceRerender = () => {
+  renderNavbar.value = false;
+
+  nextTick(() => {
+    renderNavbar.value = true;
+  });
+};
+
+const linked = () => {
+  forceRerender();
+  closeModal();
 };
 </script>
 

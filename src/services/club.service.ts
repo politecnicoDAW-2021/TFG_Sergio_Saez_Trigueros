@@ -48,6 +48,13 @@ class ClubService {
       variables: { input: { userId: userId } },
     });
   };
+
+  linkClubWithAccount = (clubId, userId) => {
+    return API.graphql({
+      query: updateClubs,
+      variables: { input: { id: clubId, userId: userId } },
+    });
+  };
 }
 
 export const clubService = new ClubService();

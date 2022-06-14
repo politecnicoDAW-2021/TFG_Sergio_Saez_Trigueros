@@ -62,17 +62,22 @@
 </template>
 
 <script setup>
+import { clubService } from "@/services/club.service";
 import { computed } from "@vue/reactivity";
 import useVuelidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
-import { reactive } from "vue";
+import { reactive, ref } from "vue";
+import { CognitoUser } from "@aws-amplify/auth";
 
 const emits = defineEmits(["close", "save"]);
+const props = defineProps({
+  user: CognitoUser,
+});
 const idError = ref(null);
 
 const formData = reactive({
   id: "",
-  type: "",
+  type: "club",
 });
 
 const rules = computed(() => ({
@@ -87,11 +92,12 @@ const closeModal = () => {
   emits("close");
 };
 
-const confirm = () => {
+const confirm = async () => {
   v$.value.$touch();
+  const userId = props.user.getUsername();
   if (v$.value.$invalid) return;
-
   if (formData.type === "club") {
+    await clubService.linkClubWithAccount(formData.id, userId);
   }
 
   if (formData.type === "member") {
