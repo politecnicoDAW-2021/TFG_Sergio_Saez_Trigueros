@@ -41,6 +41,13 @@ class ClubService {
       variables: { input: clubData },
     });
   };
+
+  findClubByLinkedUser = (userId: string) => {
+    return API.graphql({
+      query: getClubs,
+      variables: { input: { userId: userId } },
+    });
+  };
 }
 
 export const clubService = new ClubService();

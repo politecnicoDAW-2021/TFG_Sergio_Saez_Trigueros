@@ -35,7 +35,14 @@
         </li>
       </ul>
       <div class="ms-auto">
-        <span class="navbar-text">{{ user }}</span>
+        <span class="navbar-text mx-3">{{ user.attributes.nickname }}</span>
+        <button
+          v-if="!isLinked"
+          @click="openLinkModal()"
+          class="btn btn-danger"
+        >
+          + Link your account
+        </button>
         <button class="btn btn-outline-light mx-3" @click="signOut()">
           Sign Out
         </button>
@@ -47,19 +54,30 @@
 <script setup>
 import { authService } from "@/services/auth.service";
 import { onBeforeMount, ref } from "vue";
+import { CognitoUser } from "@aws-amplify/auth";
 
-defineProps({
-  user: String,
+const props = defineProps({
+  user: CognitoUser,
 });
 
+const emits = defineEmits(["openLinkModal"]);
+
 const isAdmin = ref(false);
+const isLinked = ref(true);
 
 const signOut = () => {
   authService.signOut();
 };
 
+const openLinkModal = () => {
+  emits("openLinkModal");
+};
+
 onBeforeMount(async () => {
   isAdmin.value = await authService.isAdmin();
+  const currentUserId = props.user.getUsername();
+  const isUserClub = await authService.isUserLinkedToClub(currentUserId);
+  isLinked.value = isUserClub;
 });
 </script>
 
@@ -70,5 +88,9 @@ nav {
 
 a {
   font-size: 19px;
+}
+span {
+  font-size: 18px;
+  font-weight: bold;
 }
 </style>
