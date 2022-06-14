@@ -19,8 +19,10 @@
       </p>
     </div>
     <div v-if="isAdmin" class="card-footer bg-light border-success">
-      <button class="btn btn-warning" @click="goToEdit(club.id)">Edit</button>
-      <button class="btn btn-danger" @click="">Delete</button>
+      <button class="btn btn-warning" @click="goToEdit(club.id, club.name)">
+        Edit
+      </button>
+      <button class="btn btn-danger" @click="openModal()">Delete</button>
     </div>
   </div>
 </template>
@@ -29,10 +31,12 @@
 import { Clubs } from "@/models";
 import { useRouter } from "vue-router";
 
-defineProps({
+const props = defineProps({
   club: Clubs,
   isAdmin: Boolean,
 });
+
+const emit = defineEmits(["openDelete"]);
 
 const router = useRouter();
 
@@ -41,6 +45,10 @@ const goToEdit = (clubId) => {
     name: "clubForm",
     params: { id: clubId },
   });
+};
+
+const openModal = () => {
+  emit("openDelete", { clubId: props.club.id, name: props.club.name });
 };
 </script>
 

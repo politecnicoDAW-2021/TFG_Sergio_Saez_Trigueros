@@ -11,9 +11,9 @@ import ClubCardVue from "./components/ClubCard.vue";
 
 <template>
   <authenticator class="auth">
-    <template v-slot="{ user }">
+    <template class="bodyApp" v-slot="{ user }">
       <nav-bar-vue :user="user.attributes.nickname"></nav-bar-vue>
-      <RouterView />
+      <RouterView class="body" />
     </template>
     <template v-slot:sign-in-header>
       <h3 class="amplify-heading">Sign in to your account</h3>
@@ -34,5 +34,9 @@ import ClubCardVue from "./components/ClubCard.vue";
 
 .auth {
   margin-top: 3rem;
+}
+
+.body {
+  height: 100vh;
 }
 </style>

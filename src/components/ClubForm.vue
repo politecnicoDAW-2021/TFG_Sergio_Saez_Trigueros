@@ -15,6 +15,9 @@
           placeholder="Name"
           v-model="clubData.name"
         />
+        <div v-if="v$.name.$error" class="error">
+          {{ v$.name.$errors[0].$message }}
+        </div>
       </div>
       <div class="form-group col-6">
         <label for="owner">Owner</label>
@@ -25,6 +28,9 @@
           placeholder="Owner name"
           v-model="clubData.owner"
         />
+        <div v-if="v$.owner.$error" class="error">
+          {{ v$.owner.$errors[0].$message }}
+        </div>
       </div>
     </div>
     <div class="form-row row d-flex justify-content-around">
@@ -37,6 +43,9 @@
           placeholder="Email address"
           v-model="clubData.email"
         />
+        <div v-if="v$.email.$error" class="error">
+          {{ v$.email.$errors[0].$message }}
+        </div>
       </div>
       <div class="form-group col-6">
         <label for="website">Website</label>
@@ -47,6 +56,9 @@
           placeholder="Website"
           v-model="clubData.website"
         />
+        <div v-if="v$.website.$error" class="error">
+          {{ v$.website.$errors[0].$message }}
+        </div>
       </div>
     </div>
     <div class="form-row row d-flex justify-content-around">
@@ -59,6 +71,9 @@
           id="city"
           v-model="clubData.city"
         />
+        <div v-if="v$.city.$error" class="error">
+          {{ v$.city.$errors[0].$message }}
+        </div>
       </div>
       <div class="form-group col-6">
         <label for="phone">Phone</label>
@@ -69,6 +84,9 @@
           id="phone"
           v-model="clubData.phone"
         />
+        <div v-if="v$.phone.$error" class="error">
+          {{ v$.phone.$errors[0].$message }}
+        </div>
       </div>
     </div>
     <div class="form-row d-flex justify-content-center">
@@ -81,6 +99,9 @@
           placeholder="1234 Main St"
           v-model="clubData.address"
         />
+        <div v-if="v$.address.$error" class="error">
+          {{ v$.address.$errors[0].$message }}
+        </div>
       </div>
     </div>
     <div class="form-row d-flex justify-content-center align-items-end">
@@ -109,23 +130,74 @@
 
 <script setup>
 import { clubService } from "@/services/club.service";
+import { computed } from "@vue/reactivity";
 import { reactive, ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
+import useVuelidate from "@vuelidate/core";
+import {
+  required,
+  minLength,
+  maxLength,
+  url,
+  helpers,
+  email,
+} from "@vuelidate/validators";
 
 const props = defineProps({
   clubId: String,
 });
 
 const clubData = reactive({
-  name: "",
-  address: "",
-  city: "",
-  owner: "",
-  phone: "",
-  website: "",
-  userId: "",
-  email: "",
+  name: null,
+  address: null,
+  city: null,
+  owner: null,
+  phone: null,
+  website: null,
+  userId: null,
+  email: null,
 });
+
+const phoneRegex = helpers.regex(
+  /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{2}[-\s\.]?[0-9]{4,6}$/
+);
+
+const phoneValidator = helpers.withMessage("Phone not valid", phoneRegex);
+
+const rules = computed(() => ({
+  name: {
+    required,
+    minLength: minLength(3),
+    maxLength: maxLength(40),
+  },
+  address: {
+    required,
+    minLength: minLength(10),
+    maxLength: maxLength(100),
+  },
+  city: {
+    required,
+    minLength: minLength(3),
+    maxLength: maxLength(30),
+  },
+  owner: {
+    required,
+    minLength: minLength(3),
+    maxLength: maxLength(50),
+  },
+  phone: {
+    required,
+    phoneValidator,
+  },
+  website: {
+    url,
+  },
+  email: {
+    email,
+  },
+}));
+
+const v$ = useVuelidate(rules, clubData);
 
 const title = ref(null);
 const router = useRouter();
@@ -139,11 +211,16 @@ const backToPrevious = (msgData = "") => {
 };
 
 const submit = () => {
+  v$.value.$touch();
+  console.log(v$.value);
+  if (v$.value.$invalid) return;
   if (isEdit) {
-    return;
+    try {
+      console.log("edit payload:", { ...clubData, id: props.clubId });
+      clubService.updateClub({ ...clubData, id: props.clubId });
+      return;
+    } catch (error) {}
   }
-
-  console.log("payload:", clubData);
 
   try {
     clubService.createClub(clubData);
@@ -174,5 +251,8 @@ onMounted(() => {
 <style>
 .clubForm {
   margin-left: 25%;
+}
+.error {
+  color: red;
 }
 </style>

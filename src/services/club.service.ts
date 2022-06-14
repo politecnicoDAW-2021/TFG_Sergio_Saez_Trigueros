@@ -1,4 +1,4 @@
-import { createClubs, deleteClubs } from "@/graphql/mutations";
+import { createClubs, deleteClubs, updateClubs } from "@/graphql/mutations";
 import { listClubs, getClubs } from "@/graphql/queries";
 import { Clubs } from "@/models";
 import { API } from "aws-amplify";
@@ -28,10 +28,17 @@ class ClubService {
     });
   };
 
-  createClub = (input) => {
+  createClub = (clubData) => {
     return API.graphql({
       query: createClubs,
-      variables: { input: input },
+      variables: { input: clubData },
+    });
+  };
+
+  updateClub = (clubData) => {
+    return API.graphql({
+      query: updateClubs,
+      variables: { input: clubData },
     });
   };
 }
