@@ -44,8 +44,8 @@ class ClubService {
 
   findClubByLinkedUser = (userId: string) => {
     return API.graphql({
-      query: getClubs,
-      variables: { input: { userId: userId } },
+      query: listClubs,
+      variables: { filter: { userId: { eq: userId } } },
     });
   };
 
