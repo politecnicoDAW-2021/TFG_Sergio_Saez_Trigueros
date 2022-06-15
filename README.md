@@ -44,3 +44,12 @@ npm run build
 ```sh
 npm run lint
 ```
+
+## Instructions
+
+Para loguearse como administrador usar el siguiente usuario:
+
+- email: test.user.sportevents@gmail.com
+- password: Test1234.
+
+Para usuario normal registrar un correo cualquiera (os pedirá validación)
