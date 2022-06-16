@@ -47,9 +47,9 @@ npm run lint
 
 ## Instructions
 
-Para loguearse como administrador usar el siguiente usuario:
+In order to log in as Admin, use the following:
 
 - email: test.user.sportevents@gmail.com
 - password: Test1234.
 
-Para usuario normal registrar un correo cualquiera (os pedirá validación)
+To log in as normal user, register any email (validation code will be required)
