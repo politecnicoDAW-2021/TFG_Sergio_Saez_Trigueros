@@ -29,11 +29,10 @@
 </template>
 
 <script setup>
-import { Clubs } from "@/models";
 import { useRouter } from "vue-router";
 
 const props = defineProps({
-  club: Clubs,
+  club: Object,
   isAdmin: Boolean,
 });
 
