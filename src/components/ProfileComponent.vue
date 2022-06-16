@@ -7,6 +7,10 @@
         <p>{{ profileData.name }}</p>
       </div>
       <div>
+        <label>Nickname:</label>
+        <p>{{ userNick }}</p>
+      </div>
+      <div>
         <label>Email:</label>
         <p>{{ profileData.email }}</p>
       </div>
@@ -14,12 +18,12 @@
         <label>Address:</label>
         <p>{{ profileData.address }}</p>
       </div>
+    </div>
+    <div class="column">
       <div>
         <label>City:</label>
         <p>{{ profileData.city }}</p>
       </div>
-    </div>
-    <div class="column">
       <div>
         <label>Phone:</label>
         <p>{{ profileData.phone }}</p>
@@ -62,6 +66,8 @@ const profileData = reactive({
   website: "",
 });
 
+const userNick = ref("");
+
 const isClub = ref(true);
 const route = useRoute();
 
@@ -85,6 +91,8 @@ const setMemberValues = (member) => {
 };
 
 onBeforeMount(async () => {
+  const user = await authService.getCurrentUser();
+  userNick.value = user.attributes.nickname;
   const id = route.params.id;
   isClub.value = await authService.isUserLinkedToClub(id);
   if (isClub.value) {

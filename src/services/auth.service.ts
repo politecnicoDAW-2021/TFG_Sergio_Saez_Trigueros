@@ -13,6 +13,10 @@ class AuthService {
     });
   };
 
+  getCurrentUser = () => {
+    return Auth.currentUserPoolUser();
+  };
+
   getCurrentUserId = () => {
     return Auth.currentUserInfo().then((info) => info.username);
   };
