@@ -43,7 +43,9 @@
               <li><a class="dropdown-item" href="#">Events</a></li>
               <li><a class="dropdown-item" href="#">Clubs</a></li>
               <li>
-                <a class="dropdown-item" href="#">Associated members</a>
+                <a class="dropdown-item" href="#" @click="goToMembersOverview()"
+                  >Associated members</a
+                >
               </li>
             </ul>
           </li>
@@ -98,6 +100,12 @@ const goToProfile = () => {
   router.push({
     name: "profile",
     params: { id: userId },
+  });
+};
+
+const goToMembersOverview = () => {
+  router.push({
+    name: "members",
   });
 };
 

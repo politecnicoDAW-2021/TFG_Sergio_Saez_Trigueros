@@ -3,6 +3,7 @@ import HomeView from "../views/HomeView.vue";
 import ClubFormView from "../views/ClubFormView.vue";
 import ClubsView from "../views/ClubsView.vue";
 import ProfileView from "../views/ProfileView.vue";
+import MembersOverview from "../views/MembersOverview.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +27,11 @@ const router = createRouter({
       path: "/profile/:id?",
       name: "profile",
       component: ProfileView,
+    },
+    {
+      path: "/members",
+      name: "members",
+      component: MembersOverview,
     },
   ],
 });
