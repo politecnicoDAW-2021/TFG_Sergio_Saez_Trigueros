@@ -9,7 +9,6 @@ import MembersTableVue from "@/components/MembersTable.vue";
 
 <style>
 .members-table {
-  width: 50%;
   height: fit-content;
   margin: 0 auto;
 }
