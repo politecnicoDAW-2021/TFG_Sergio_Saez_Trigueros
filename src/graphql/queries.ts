@@ -84,6 +84,15 @@ export const listClubs = /* GraphQL */ `
         id
         name
         address
+        AssociatedMembers {
+          items {
+            id
+            first_name
+            last_name
+            city
+            email
+          }
+        }
         city
         owner
         phone

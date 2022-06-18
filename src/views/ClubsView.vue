@@ -8,6 +8,11 @@
       @save="deleteClub()"
       @close="closeModal()"
     ></DeleteModalVue>
+    <ClubMembersModalVue
+      v-if="showMembers"
+      :members="membersToShow"
+      @close-members="closeMembers()"
+    ></ClubMembersModalVue>
     <div v-if="alertMsg" class="alert alert-success header" role="alert">
       {{ alertMsg }}
     </div>
@@ -27,6 +32,7 @@
         :club="club"
         :isAdmin="isAdmin"
         @open-delete="openModal($event)"
+        @open-members-modal="showMembersModal($event)"
       ></ClubCard>
     </div>
   </main>
@@ -39,6 +45,7 @@ import { onBeforeMount, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import ClubCard from "../components/ClubCard.vue";
 import DeleteModalVue from "@/components/DeleteModal.vue";
+import ClubMembersModalVue from "@/components/ClubMembersModal.vue";
 
 const clubs = ref(null);
 const isAdmin = ref(false);
@@ -47,9 +54,11 @@ const deleteModal = ref(null);
 const router = useRouter();
 const route = useRoute();
 const showModal = ref(false);
+const showMembers = ref(false);
 const modalTitle = ref("");
 const modalBody = ref("");
 const idToDelete = ref(null);
+const membersToShow = ref(null);
 
 const goToCreate = () => {
   router.push({
@@ -68,6 +77,14 @@ const showAlert = () => {
   }
 };
 
+const blockScroll = () => {
+  document.getElementsByTagName("body")[0].style = "overflow: hidden";
+};
+
+const normalScroll = () => {
+  document.getElementsByTagName("body")[0].style = "overflow: auto";
+};
+
 const openModal = ($event) => {
   const clubId = $event.clubId;
   idToDelete.value = clubId;
@@ -75,12 +92,24 @@ const openModal = ($event) => {
   modalTitle.value = "Delete";
   modalBody.value = `Are you sure to delete ${clubName}`;
   showModal.value = true;
-  document.getElementsByTagName("body")[0].style = "overflow: hidden";
+  blockScroll();
+};
+
+const showMembersModal = ($event) => {
+  membersToShow.value = $event.members.items;
+  console.log(membersToShow.value);
+  showMembers.value = true;
+  blockScroll();
+};
+
+const closeMembers = () => {
+  showMembers.value = false;
+  normalScroll();
 };
 
 const closeModal = () => {
   showModal.value = false;
-  document.getElementsByTagName("body")[0].style = "overflow: auto";
+  normalScroll();
 };
 
 const deleteClub = async () => {

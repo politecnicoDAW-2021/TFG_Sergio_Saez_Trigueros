@@ -23,7 +23,12 @@
         Edit
       </button>
       <button class="btn btn-danger" @click="openModal()">Delete</button>
-      <button class="btn btn-secondary">View members</button>
+      <button
+        class="btn btn-secondary"
+        @click="openViewMembers(club.AssociatedMembers)"
+      >
+        View members
+      </button>
     </div>
   </div>
 </template>
@@ -36,7 +41,7 @@ const props = defineProps({
   isAdmin: Boolean,
 });
 
-const emit = defineEmits(["openDelete"]);
+const emit = defineEmits(["openDelete", "openMembersModal"]);
 
 const router = useRouter();
 
@@ -49,6 +54,10 @@ const goToEdit = (clubId) => {
 
 const openModal = () => {
   emit("openDelete", { clubId: props.club.id, name: props.club.name });
+};
+
+const openViewMembers = (members) => {
+  emit("openMembersModal", { members: members });
 };
 </script>
 
