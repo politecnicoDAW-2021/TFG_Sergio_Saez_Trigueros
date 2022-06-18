@@ -36,6 +36,7 @@ import ClubCardVue from "./components/ClubCard.vue";
 import AccountLinkModalVue from "./components/AccountLinkModal.vue";
 import ProfileViewVue from "./views/ProfileView.vue";
 import MembersOverview from "./views/MembersOverview.vue";
+import MemberFormView from "./views/MemberFormView.vue";
 import { nextTick, ref } from "vue";
 
 const showModal = ref(false);
