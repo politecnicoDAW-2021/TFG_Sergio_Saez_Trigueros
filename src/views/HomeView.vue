@@ -1,5 +1,5 @@
 <template>
-  <h1>Welcome to SportEvents</h1>
+  <h1 class="header">Welcome to SportEvents</h1>
 </template>
 
 <script setup></script>
