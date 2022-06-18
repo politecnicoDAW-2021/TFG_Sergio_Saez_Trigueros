@@ -1,7 +1,7 @@
 import {
   createAssociatedMembers,
+  deleteAssociatedMembers,
   updateAssociatedMembers,
-  type deleteAssociatedMembers,
 } from "@/graphql/mutations";
 import { getAssociatedMembers, listAssociatedMembers } from "@/graphql/queries";
 import { API } from "aws-amplify";
@@ -34,11 +34,11 @@ class MemberService {
   createMember = (memberData) => {
     return API.graphql({
       query: createAssociatedMembers,
-      variables: { input: clubData },
+      variables: { input: memberData },
     });
   };
 
-  updateMebmer = (memberData) => {
+  updateMember = (memberData) => {
     return API.graphql({
       query: updateAssociatedMembers,
       variables: { input: memberData },
