@@ -50,7 +50,7 @@
 
 <script setup>
 import { authService } from "@/services/auth.service";
-import { ref, reactive, onMounted, onBeforeMount } from "vue";
+import { ref, reactive, onBeforeMount } from "vue";
 import { useRoute } from "vue-router";
 import { clubService } from "@/services/club.service";
 
