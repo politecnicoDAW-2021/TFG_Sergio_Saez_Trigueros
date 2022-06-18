@@ -41,7 +41,9 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="#">Events</a></li>
-              <li><a class="dropdown-item" href="#">Clubs</a></li>
+              <li>
+                <a class="dropdown-item" href="#" @click="goToClubs()">Clubs</a>
+              </li>
               <li>
                 <a class="dropdown-item" href="#" @click="goToMembersOverview()"
                   >Associated members</a
@@ -100,6 +102,12 @@ const goToProfile = () => {
   router.push({
     name: "profile",
     params: { id: userId },
+  });
+};
+
+const goToClubs = () => {
+  router.push({
+    name: "clubs",
   });
 };
 
