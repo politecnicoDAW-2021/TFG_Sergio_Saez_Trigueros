@@ -31,9 +31,16 @@
           <td>{{ member.gender }}</td>
           <td>{{ member.clubID }}</td>
           <td>
-            <button class="btn btn-warning">Edit</button>
-            <button class="btn btn-danger mx-2">Delete</button>
-            <button class="btn btn-light">View events</button>
+            <button class="btn btn-warning" @click="goToEdit(member.id)">
+              Edit
+            </button>
+            <button
+              class="btn btn-danger mx-2"
+              @click="openModal(member.id, member.first_name)"
+            >
+              Delete
+            </button>
+            <button class="btn btn-secondary">View events</button>
           </td>
         </tr>
       </tbody>
@@ -45,11 +52,28 @@
 import { clubService } from "@/services/club.service";
 import { memberService } from "@/services/member.service";
 import { onBeforeMount, ref } from "vue";
+import { useRouter } from "vue-router";
 
 const members = ref(null);
+const router = useRouter();
+const emit = defineEmits(["openDelete"]);
 
-const goToCreateMember = () => {
-  console.log("create");
+const goToEdit = (memberId) => {
+  router.push({
+    name: "member",
+    params: { id: memberId },
+  });
+};
+
+const openModal = (id, name) => {
+  emit("openDelete", { memberId: id, name: name });
+};
+
+const goToCreateMember = (id = "") => {
+  router.push({
+    name: "member",
+    params: { id: id },
+  });
 };
 
 const getClubNameById = async (id) => {
@@ -62,7 +86,6 @@ onBeforeMount(async () => {
   members.value = membersData.data.listAssociatedMembers.items;
   members.value.map(async (member) => {
     const clubName = await getClubNameById(member.clubID);
-    console.log(member);
     member.clubID = clubName;
     return member;
   });
