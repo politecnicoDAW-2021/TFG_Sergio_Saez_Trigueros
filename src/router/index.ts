@@ -5,6 +5,8 @@ import ClubsView from "../views/ClubsView.vue";
 import ProfileView from "../views/ProfileView.vue";
 import MembersOverview from "../views/MembersOverview.vue";
 import MemberFormView from "../views/MemberFormView.vue";
+import EventFormView from "../views/EventFormView.vue";
+import EventsOverview from "../views/EventsOverview.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -38,6 +40,16 @@ const router = createRouter({
       path: "/member/:id?",
       name: "member",
       component: MemberFormView,
+    },
+    {
+      path: "/create/event/:id?",
+      name: "createEvent",
+      component: EventFormView,
+    },
+    {
+      path: "/events-table",
+      name: "eventsTable",
+      component: EventsOverview,
     },
   ],
 });

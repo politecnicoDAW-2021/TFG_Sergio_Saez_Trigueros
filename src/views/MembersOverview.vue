@@ -22,7 +22,7 @@
 import MembersTableVue from "@/components/MembersTable.vue";
 import DeleteModalVue from "@/components/DeleteModal.vue";
 import { memberService } from "@/services/member.service";
-import { nextTick, onBeforeMount, ref } from "vue";
+import { nextTick, onBeforeMount, onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 import { authService } from "@/services/auth.service";
 
@@ -79,6 +79,7 @@ const deleteMember = async () => {
 
 onBeforeMount(async () => {
   isAdmin.value = await authService.isAdmin();
+  forceRerender();
   showAlert();
 });
 </script>

@@ -40,7 +40,11 @@
               Admin Tools
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Events</a></li>
+              <li>
+                <a class="dropdown-item" href="#" @click="goToEventsOverview()"
+                  >Events</a
+                >
+              </li>
               <li>
                 <a class="dropdown-item" href="#" @click="goToClubs()">Clubs</a>
               </li>
@@ -111,6 +115,12 @@ const goToProfile = () => {
 const goToClubs = () => {
   router.push({
     name: "clubs",
+  });
+};
+
+const goToEventsOverview = () => {
+  router.push({
+    name: "eventsTable",
   });
 };
 
