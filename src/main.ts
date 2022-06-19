@@ -12,7 +12,9 @@ const app = createApp(App);
 app.use(createPinia());
 app.use(router);
 app.mount("#app");
-
+app.config.warnHandler = function (msg, vm, trace) {
+  return null;
+};
 Amplify.configure({
   ...awsconfig,
   API: {

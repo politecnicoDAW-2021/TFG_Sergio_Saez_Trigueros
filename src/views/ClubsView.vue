@@ -26,7 +26,7 @@
         Create
       </button>
     </div>
-    <div class="club-wrapper">
+    <div class="card-wrapper">
       <ClubCard
         v-for="club in clubs"
         :club="club"
@@ -97,7 +97,6 @@ const openModal = ($event) => {
 
 const showMembersModal = ($event) => {
   membersToShow.value = $event.members.items;
-  console.log(membersToShow.value);
   showMembers.value = true;
   blockScroll();
 };
@@ -149,10 +148,10 @@ main {
   left: 93.5%;
 }
 
-.club-wrapper {
+.card-wrapper {
   padding: 3rem;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 </style>

@@ -1,5 +1,14 @@
-import { createEvents, deleteEvents, updateEvents } from "@/graphql/mutations";
-import { getEvents, listEvents } from "@/graphql/queries";
+import {
+  createAssociatedMembersEvents,
+  createEvents,
+  deleteEvents,
+  updateEvents,
+} from "@/graphql/mutations";
+import {
+  getEvents,
+  listAssociatedMembersEvents,
+  listEvents,
+} from "@/graphql/queries";
 import { API } from "aws-amplify";
 
 class EventService {
@@ -27,31 +36,33 @@ class EventService {
     });
   };
 
-  createEvent = (eventData) => {
+  createEvent = (eventData: any) => {
     return API.graphql({
       query: createEvents,
       variables: { input: eventData },
     });
   };
 
-  updateEvent = (eventData) => {
+  updateEvent = (eventData: any) => {
     return API.graphql({
       query: updateEvents,
       variables: { input: eventData },
     });
   };
 
-  findMebmerByLinkedUser = (userId: string) => {
+  addMemberToEvent = (memberId: string, eventId: string) => {
     return API.graphql({
-      query: listEvents,
-      variables: { filter: { userId: { eq: userId } } },
+      query: createAssociatedMembersEvents,
+      variables: {
+        input: { associatedMembersID: memberId, eventsID: eventId },
+      },
     });
   };
 
-  linkEventWithAccount = (eventId, userId) => {
+  getEventsOfMember = (memberId: string) => {
     return API.graphql({
-      query: updateEvents,
-      variables: { input: { id: eventId, userId: userId } },
+      query: listAssociatedMembersEvents,
+      variables: { filter: { associatedMembersID: { eq: memberId } } },
     });
   };
 }

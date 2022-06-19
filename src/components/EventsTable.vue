@@ -16,11 +16,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr
-          v-for="event in events"
-          class="table-row"
-          @click="showEvent(event.id)"
-        >
+        <tr v-for="event in events" class="table-row">
           <td>{{ event.name }}</td>
           <td>{{ event.type }}</td>
           <td>{{ event.discipline }}</td>
@@ -36,6 +32,9 @@
             >
               Delete
             </button>
+            <button class="btn btn-secondary" @click="openList(event)">
+              Show list
+            </button>
           </td>
         </tr>
       </tbody>
@@ -47,11 +46,24 @@
 import { useRouter } from "vue-router";
 
 const router = useRouter();
+const props = defineProps({
+  events: Array,
+});
+
+const emit = defineEmits(["openDelete"]);
 
 const goToEventForm = (eventId = "") => {
   router.push({
     name: "createEvent",
     params: { id: eventId },
   });
+};
+
+const openModal = (id, name) => {
+  emit("openDelete", { eventId: id, name: name });
+};
+
+const openList = (member) => {
+  console.log(member);
 };
 </script>

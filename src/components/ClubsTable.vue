@@ -34,7 +34,6 @@ const loadClubs = () => {
 
 const selectClub = (clubId) => {
   emit("selected", { clubId: clubId });
-  console.log(clubId);
 };
 
 onBeforeMount(() => {

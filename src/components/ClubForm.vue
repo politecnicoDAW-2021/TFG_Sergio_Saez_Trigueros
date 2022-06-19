@@ -223,7 +223,7 @@ const submit = () => {
     clubService.createClub(clubData);
     backToPrevious(`Club ${clubData.name} created`);
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 

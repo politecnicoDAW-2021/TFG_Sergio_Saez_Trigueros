@@ -23,8 +23,8 @@ type Events @model @auth(rules: [{ allow: public }]) {
   type: EventTypes!
   description: String!
   discipline: Disciplines!
-  starting_date: AWSTime!
-  starting_time: AWSTime!
+  starting_date: AWSDate!
+  starting_time: AWSTime
   location: String!
   capacity: String
   image: String
@@ -32,8 +32,8 @@ type Events @model @auth(rules: [{ allow: public }]) {
   price: Float
   AssociatedMembers: [AssociatedMembers]
     @manyToMany(relationName: "AssociatedMembersEvents")
-  ending_date: AWSDate!
-  ending_time: AWSTime!
+  ending_date: AWSDate
+  ending_time: AWSTime
 }
 
 type Clubs @model @auth(rules: [{ allow: public }]) {

@@ -1,5 +1,4 @@
 <template>
-  <h1>{{ title }}</h1>
   <member-form-vue v-if="isAdmin" :memberId="memberId"></member-form-vue>
 </template>
 

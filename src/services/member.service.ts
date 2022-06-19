@@ -31,28 +31,28 @@ class MemberService {
     });
   };
 
-  createMember = (memberData) => {
+  createMember = (memberData: any) => {
     return API.graphql({
       query: createAssociatedMembers,
       variables: { input: memberData },
     });
   };
 
-  updateMember = (memberData) => {
+  updateMember = (memberData: any) => {
     return API.graphql({
       query: updateAssociatedMembers,
       variables: { input: memberData },
     });
   };
 
-  findMebmerByLinkedUser = (userId: string) => {
+  findMemberByLinkedUser = (userId: string) => {
     return API.graphql({
       query: listAssociatedMembers,
       variables: { filter: { userId: { eq: userId } } },
     });
   };
 
-  linkMemberWithAccount = (memberId, userId) => {
+  linkMemberWithAccount = (memberId: any, userId: any) => {
     return API.graphql({
       query: updateAssociatedMembers,
       variables: { input: { id: memberId, userId: userId } },
