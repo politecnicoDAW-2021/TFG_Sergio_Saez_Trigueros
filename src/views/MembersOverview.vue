@@ -47,7 +47,6 @@ const showAlert = () => {
 
 const openModal = ($event) => {
   const memberId = $event.memberId;
-  console.log(memberId);
   idToDelete.value = memberId;
   const memberName = $event.name;
   modalTitle.value = "Delete";

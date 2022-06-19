@@ -53,6 +53,7 @@ import { authService } from "@/services/auth.service";
 import { ref, reactive, onBeforeMount } from "vue";
 import { useRoute } from "vue-router";
 import { clubService } from "@/services/club.service";
+import { memberService } from "@/services/member.service";
 
 const profileData = reactive({
   name: "",
@@ -67,7 +68,6 @@ const profileData = reactive({
 });
 
 const userNick = ref("");
-
 const isClub = ref(true);
 const route = useRoute();
 
@@ -85,8 +85,8 @@ const setMemberValues = (member) => {
   profileData.address = member.address;
   profileData.city = member.city;
   profileData.phone = member.phone;
-  profileData.name = `${member.firstName} ${member.lastName}`;
-  profileData.birthdate = member.birthdate;
+  profileData.name = `${member.first_name} ${member.last_name}`;
+  profileData.birthdate = member.birth_date;
   profileData.gender = member.gender;
 };
 
@@ -95,10 +95,16 @@ onBeforeMount(async () => {
   userNick.value = user.attributes.nickname;
   const id = route.params.id;
   isClub.value = await authService.isUserLinkedToClub(id);
+  const isMember = await authService.isUserLinkedToMember(id);
   if (isClub.value) {
     const clubData = await clubService.findClubByLinkedUser(id);
     const club = clubData.data.listClubs.items[0];
     setClubValues(club);
+  }
+  if (isMember) {
+    const memberData = await memberService.findMebmerByLinkedUser(id);
+    const member = memberData.data.listAssociatedMembers.items[0];
+    setMemberValues(member);
   }
 });
 </script>

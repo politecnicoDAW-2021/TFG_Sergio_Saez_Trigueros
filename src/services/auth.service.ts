@@ -1,6 +1,7 @@
 import type { CognitoUser } from "@aws-amplify/auth";
 import { Auth } from "aws-amplify";
 import { clubService } from "./club.service";
+import { memberService } from "./member.service";
 
 class AuthService {
   getAuth = () => {
@@ -43,6 +44,17 @@ class AuthService {
     const clubs = clubsResponse.data.listClubs.items;
     const linkedClub = clubs.filter((club) => club.userId === userId);
     return linkedClub.length > 0;
+  };
+
+  isUserLinkedToMember = async (userId: string) => {
+    const membersResponse = await memberService
+      .getMembers()
+      .then((membersData) => {
+        return membersData;
+      });
+    const members = membersResponse.data.listAssociatedMembers.items;
+    const linkedMember = members.filter((member) => member.userId === userId);
+    return linkedMember.length > 0;
   };
 }
 

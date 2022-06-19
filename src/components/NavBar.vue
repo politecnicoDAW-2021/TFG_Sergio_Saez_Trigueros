@@ -91,6 +91,9 @@ const router = useRouter();
 
 const signOut = () => {
   authService.signOut();
+  router.push({
+    name: "home",
+  });
 };
 
 const openLinkModal = () => {
@@ -121,7 +124,13 @@ onBeforeMount(async () => {
   isAdmin.value = await authService.isAdmin();
   const currentUserId = props.user.getUsername();
   const isUserClub = await authService.isUserLinkedToClub(currentUserId);
-  isLinked.value = isUserClub;
+  const isUserMember = await authService.isUserLinkedToMember(currentUserId);
+  if (isUserClub) {
+    isLinked.value = isUserClub;
+  }
+  if (isUserMember) {
+    isLinked.value = isUserMember;
+  }
 });
 </script>
 

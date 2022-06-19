@@ -68,6 +68,7 @@ import useVuelidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
 import { reactive, ref } from "vue";
 import { CognitoUser } from "@aws-amplify/auth";
+import { memberService } from "@/services/member.service";
 
 const emits = defineEmits(["close", "save"]);
 const props = defineProps({
@@ -101,6 +102,7 @@ const confirm = async () => {
   }
 
   if (formData.type === "member") {
+    await memberService.linkMemberWithAccount(formData.id, userId);
   }
   emits("save");
 };

@@ -1,8 +1,11 @@
 <template>
   <div class="modal-wrapper">
     <div class="modal-component">
+      <div class="modal-header">
+        <h3>Associated members</h3>
+      </div>
       <div class="modal-body">
-        <div class="table-responsive p-5">
+        <div class="table-responsive p-2">
           <table class="table table-hover table-striped">
             <thead>
               <tr>
