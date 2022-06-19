@@ -86,7 +86,7 @@ const props = defineProps({
 const emits = defineEmits(["openLinkModal"]);
 
 const isAdmin = ref(false);
-const isLinked = ref(true);
+const isLinked = ref(false);
 const router = useRouter();
 
 const signOut = () => {
@@ -125,11 +125,8 @@ onBeforeMount(async () => {
   const currentUserId = props.user.getUsername();
   const isUserClub = await authService.isUserLinkedToClub(currentUserId);
   const isUserMember = await authService.isUserLinkedToMember(currentUserId);
-  if (isUserClub) {
-    isLinked.value = isUserClub;
-  }
-  if (isUserMember) {
-    isLinked.value = isUserMember;
+  if (isUserClub || isUserMember) {
+    isLinked.value = true;
   }
 });
 </script>
